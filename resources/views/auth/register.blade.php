@@ -25,16 +25,16 @@
                             <input type="password" placeholder="Confirm Password" id="password_confirmation"
                                 class="form-control @error('password') is-invalid @enderror" name="password_confirmation"
                                 required>
-                            @if ($errors->has('email'))
-                                <p><span class="text-danger">{{ $errors->first('email') }}</span></p>
-                            @endif
-                            @if ($errors->has('password'))
-                                <p><span class="text-danger">{{ $errors->first('password') }}</span></p>
-                            @endif
-                            @if ($errors->has('password_confirmation'))
-                                <p><span class="text-danger">{{ $errors->first('password_confirmation') }}</span></p>
-                            @endif
                         </div>
+                        @if ($errors->has('email'))
+                            <p><span class="text-danger">{{ $errors->first('email') }}</span></p>
+                        @endif
+                        @if ($errors->has('password'))
+                            <p><span class="text-danger">{{ $errors->first('password') }}</span></p>
+                        @endif
+                        @if ($errors->has('password_confirmation'))
+                            <p><span class="text-danger">{{ $errors->first('password_confirmation') }}</span></p>
+                        @endif
                         <div class="form-group">
                             <button type="submit" class="btn btn-dark btn-block">Sign Up</button>
                         </div>

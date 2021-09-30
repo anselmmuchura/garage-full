@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Models\Vehicle;
 use App\Models\Service;
 
 class HomeController extends Controller
@@ -25,21 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $users = DB::table('owners')
-            ->rightJoin('vehicles', 'owners.id', '=', 'vehicles.owner_id')
-            ->get();
-            $profile;
-            $client = array();
+        $clients = Vehicle::rightJoin('services', 'vehicles.id', '=', 'services.vehicle_id')->get();
+        
 
-            foreach($users as $user){
-                $profile = Service::where('vehicle_id', $user->id)->first();
-                // array_push($users, $profile);
-            }
-
-            dd($users);
-            
-            
-
-        return view('dashboard');
+        return view('dashboard', ['clients'=> $clients]);
     }
 }

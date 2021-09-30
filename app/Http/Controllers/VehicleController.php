@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Vehicle;
-use App\Models\Owner;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -47,14 +46,17 @@ class VehicleController extends Controller
      */
     public function store(Request $request)
     {  
+
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:owners',
+            'email' => 'required|email',
             'phone' => 'required',
             'regNo' => 'required|unique:vehicles',
         ]);
            
         $data = $request->all();
+
+        
         
         $createVehicle = Vehicle::create([
             'regNo' => $data['regNo'],
@@ -67,8 +69,8 @@ class VehicleController extends Controller
             'phoneNumber' => $data['phone'],
         ]);
         
-        Alert::success('You have been logged out.', 'Good bye!');
-        return redirect("dashboard")->withSuccess('Great! You have Successfully loggedin');
+        Alert::success('Success', 'Vehicle Added!');
+        return redirect("dashboard")->withSuccess('Success! Vehicle Added');
         
     }
 

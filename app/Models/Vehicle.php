@@ -21,7 +21,7 @@ class Vehicle extends Model
         'phoneNumber',
     ];
 
-    public function service()
+    public function services()
     {
         return $this->hasMany(Service::class);
     }

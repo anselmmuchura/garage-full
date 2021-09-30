@@ -8,7 +8,9 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Hash;
+use Session;
 use App\Models\UserVerify;
+use Illuminate\Support\Str;
 use Mail;
 use RealRashid\SweetAlert\Facades\Alert;
 
