@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 use App\Models\UserVerify;
 use Mail;
+use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class VerificationController extends Controller
@@ -56,7 +57,7 @@ class VerificationController extends Controller
                 $verifyUser->user->is_email_verified = 1;
                 $verifyUser->user->save();
                 Mail::send('email.emailVerified', ['token' => $token], function($message){
-                    $message->to($verifyUser->user->email);
+                    $message->to(User::find($verifyUser->user_id)->first()->email);
                     $message->subject('Email Verification Mail');
                 });
                 $message = "Your e-mail is verified. You can now login.";

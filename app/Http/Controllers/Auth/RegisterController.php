@@ -76,7 +76,7 @@ class RegisterController extends Controller
             });
             if($mailSent){
                 Alert::success('Account created Successfully', 'Check your email and veify account!');
-                return redirect("login");
+                return redirect()->route('login')->with('message', 'Account created Successfully. Check your email and veify account!');
             }else{
                 Alert::error('Error', 'Could not send verification details to your email!');
                 return redirect("register");

@@ -149,14 +149,73 @@
             <!-- Main content -->
             <section class="content">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12 col-lg-5 col-xl-4">
+                        <div class="box box-widget widget-user">
+                            <!-- Add the bg color to the header using any of the bg-* classes -->
+                            <div class="widget-user-header bg-black"
+                                style="/* background: url('images/gallery/full/10.jpg') center center; */">
+                                <h3 class="widget-user-username">{{ $client->regNo }}</h3>
+                                <h6 class="widget-user-desc">{{ $client->make }} {{ $client->model }}</h6>
+                            </div>
 
+                            <div class="box-footer">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="description-block">
+                                            <h5 class="description-header">VISITS</h5>
+                                            <span class="description-text">{{ $sessions->count() }}</span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-sm-4 br-1 bl-1">
+                                        <div class="description-block">
+                                            <h5 class="description-header"></h5>
+                                            <span class="description-text"></span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-sm-4">
+                                        <div class="description-block">
+                                            <h5 class="description-header"></h5>
+                                            <span class="description-text"></span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                                <!-- /.row -->
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="box-body box-profile">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div>
+                                            <p>Owner's name :<span class="text-gray pl-10">{{ $client->fullName }}</span>
+                                            </p>
+                                            <p>Email :<span class="text-gray pl-10">{{ $client->email }}</span> </p>
+                                            <p>Phone :<span class="text-gray pl-10">{{ $client->phoneNumber }}</span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+
+                    </div>
+
+                    <div class="col-12 col-lg-7 col-xl-8">
                         <div class="box">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Client list</h3> &nbsp; &nbsp;
+                                <h3 class="box-title">Client sessions</h3> &nbsp; &nbsp;
                                 <button type="button"
                                     class="waves-effect waves-light btn btn-outline btn-rounded btn-warning mb-5 btn-sm"
-                                    data-toggle="modal" data-target="#myModal">Add new client</button>
+                                    data-toggle="modal" data-target="#myModal">Add new session</button>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
@@ -164,55 +223,27 @@
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Registration</th>
-                                                <th>Make</th>
-                                                <th>Model</th>
-                                                <th>Owner</th>
-                                                <th>last serviced</th>
-                                                <th>Action</th>
+                                                <th>last session</th>
+                                                <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if ($clients->count() > 0)
-                                                @foreach ($clients as $client)
-                                                    <tr>
-                                                        <td>{{ $client->regNo }}</td>
-                                                        <td>{{ $client->make }}</td>
-                                                        <td>{{ $client->model }}</td>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div>
-                                                                    <a href="#"
-                                                                        class="text-dark font-weight-600 hover-primary mb-1 font-size-16">{{ $client->fullName }}</a>
-                                                                    <span
-                                                                        class="text-fade d-block">{{ $client->email }}</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>@if ($client->timeOut == '')N/A @else{{ $client->timeOut }} @endif</td>
-                                                        <td><a href="{{ route('client.profile', $client->vehicle_id) }}"
-                                                                class="waves-effect waves-light btn btn-primary btn-circle mx-5"><span
-                                                                    class="icon-Arrow-right"><span
-                                                                        class="path1"></span><span
-                                                                        class="path2"></span></span></a></td>
-                                                    </tr>
-                                                @endforeach
-                                            @else
+                                            @foreach ($sessions as $session)
                                                 <tr>
-                                                    <td colspan="6" style="text-align: center;">No clients at the moment
-                                                    </td>
+                                                    <td>{{ $session->updated_at }}</td>
+                                                    <td><a href="{{ route('session.view', $session->id) }}"
+                                                            class="waves-effect waves-light btn btn-primary btn-circle mx-5"><span
+                                                                class="icon-Arrow-right"><span
+                                                                    class="path1"></span><span
+                                                                    class="path2"></span></span></a></td>
                                                 </tr>
-                                            @endif
-
+                                            @endforeach
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <th>Registration</th>
-                                                <th>Make</th>
-                                                <th>Model</th>
-                                                <th>Owner</th>
-                                                <th>last serviced</th>
-                                                <th>Action</th>
+                                                <th>last session</th>
+                                                <th>actions</th>
+
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -221,12 +252,9 @@
                             <!-- /.box-body -->
                         </div>
                         <!-- /.box -->
-
                     </div>
-
-                    <!-- /.col -->
-                </div>
-                <!-- /.row -->
+                    <!-- /.row -->
+                    <!-- /.row -->
             </section>
             <!-- /.content -->
 
@@ -257,68 +285,57 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="{{ route('storeVehicle') }}">
+                    <form method="POST" action="{{ route('sessions.store') }}">
                         @csrf
                         <div class="box-body">
-                            <h4 class="box-title text-info"><i class="ti-user mr-15"></i> Personal Info</h4>
+                            <h4 class="box-title text-info"><i class="ti-user mr-15"></i>Session Info</h4>
                             <hr class="my-15">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Full name</label>
-                                        <input type="text" name="name" class="form-control" placeholder="First Name">
+                                        <label>Time In</label>
+                                        <input class="form-control" type="date" name="timeIn" required />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Phone number</label>
-                                        <input type="tel" name="phone" class="form-control" placeholder="Phone Number">
+                                        <label>Time Promised</label>
+                                        <input class="form-control" type="date" name="timeOut" required />
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>E-mail</label>
-                                        <input type="email" name="email" class="form-control" placeholder="E-mail">
+                                        <label>Milleage</label>
+                                        <input type="number" name="milleage" class="form-control" placeholder="Milleage"
+                                            required />
                                     </div>
                                 </div>
-
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Fuel (%)</label>
+                                        <input type="number" name="fuel" max="100" min="0" class="form-control"
+                                            placeholder="Fuel" required />
+                                    </div>
+                                </div>
                             </div>
-                            <br>
-                            <h4 class="box-title text-info"><i class="ti-save mr-15"></i> Vehicle info</h4>
-                            <hr class="my-15">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Registration</label>
-                                        <input type="text" name="regNo" class="form-control"
-                                            placeholder="Registration number">
+                                        <label>Battery</label>
+                                        <input type="text" name="battery" class="form-control" placeholder="Battery"
+                                            required />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Make</label>
-                                        <input type="text" name="make" class="form-control" placeholder="Make">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Model</label>
-                                        <input type="text" name="model" class="form-control" placeholder="Model">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>VIN number</label>
-                                        <input type="text" name="vinNo" class="form-control" placeholder="VIN number">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Engine number</label>
-                                        <input type="text" name="engineNo" class="form-control"
-                                            placeholder="Engine number">
+                                        <label>Vehicle</label>
+                                        <select name="vehicle_id" class="form-control select2"
+                                            style="width: 100%;max-height: 50px; overflow: auto;" tabindex="-1"
+                                            aria-hidden="true" @if (!$client->exists()) disabled @endif>
+                                            <option value="{{ $client->id }}">{{ $client->regNo }}</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>

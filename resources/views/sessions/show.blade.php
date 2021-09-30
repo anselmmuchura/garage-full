@@ -198,62 +198,71 @@
                                     <li class="p-15">
                                         <div class="box p-15 mb-0 d-block bb-2 border-danger">
                                             <span
-                                                class="pull-right badge @if ($inspection->rear_view_mirror == 'N/A')badge-danger @elseif($inspection->rear_view_mirror == 'Fix') badge-warning @else badge-success @endif">{{ $inspection->rear_view_mirror }}</span>
+                                                class="pull-right badge @if ($inspection->rear_view_mirror == 'N/A') badge-warning @elseif($inspection->rear_view_mirror == 'Fix')  badge-danger @else badge-success @endif">{{ $inspection->rear_view_mirror }}</span>
                                             <span class="font-size-14 text-line">Rear_view_mirror </span>
                                         </div>
                                     </li>
                                     <li class="p-15">
                                         <div class="box p-15 mb-0 d-block bb-2 border-warning">
-                                            <span class="pull-right badge badge-warning">Fix</span>
+                                            <span
+                                                class="pull-right badge @if ($inspection->windshield == 'N/A') badge-warning @elseif($inspection->windshield == 'Fix')  badge-danger @else badge-success @endif">{{ $inspection->windshield }}</span>
                                             <span class="font-size-14 text-line">windshield </span>
                                         </div>
                                     </li>
                                     <li class="p-15">
                                         <div class="box p-15 mb-0 d-block bb-2 border-warning">
-                                            <span class="pull-right badge badge-warning">Fix</span>
-                                            <span class="font-size-14 text-line">windshield </span>
+                                            <span
+                                                class="pull-right badge @if ($inspection->air_conditioning_operation == 'N/A') badge-warning @elseif($inspection->air_conditioning_operation == 'Fix')  badge-danger @else badge-success @endif">{{ $inspection->air_conditioning_operation }}</span>
+                                            <span class="font-size-14 text-line">air_conditioning_operation</span>
                                         </div>
                                     </li>
                                     <li class="p-15">
                                         <div class="box p-15 mb-0 d-block bb-2 border-warning">
-                                            <span class="pull-right badge badge-warning">Fix</span>
-                                            <span class="font-size-14 text-line">windshield </span>
+                                            <span
+                                                class="pull-right badge @if ($inspection->dash_board_instrumentation == 'N/A') badge-warning @elseif($inspection->dash_board_instrumentation == 'Fix')  badge-danger @else badge-success @endif">{{ $inspection->dash_board_instrumentation }}</span>
+                                            <span class="font-size-14 text-line">dash_board_instrumentation </span>
                                         </div>
                                     </li>
                                     <li class="p-15">
                                         <div class="box p-15 mb-0 d-block bb-2 border-warning">
-                                            <span class="pull-right badge badge-warning">Fix</span>
-                                            <span class="font-size-14 text-line">windshield </span>
+                                            <span
+                                                class="pull-right badge @if ($inspection->internal_lighting == 'N/A') badge-warning @elseif($inspection->internal_lighting == 'Fix')  badge-danger @else badge-success @endif">{{ $inspection->internal_lighting }}</span>
+                                            <span class="font-size-14 text-line">internal_lighting</span>
                                         </div>
                                     </li>
                                     <li class="p-15">
                                         <div class="box p-15 mb-0 d-block bb-2 border-warning">
-                                            <span class="pull-right badge badge-warning">Fix</span>
-                                            <span class="font-size-14 text-line">windshield </span>
+                                            <span
+                                                class="pull-right badge @if ($inspection->floor_carpeting == 'N/A') badge-warning @elseif($inspection->floor_carpeting == 'Fix')  badge-danger @else badge-success @endif">{{ $inspection->floor_carpeting }}</span>
+                                            <span class="font-size-14 text-line">floor_carpeting</span>
                                         </div>
                                     </li>
                                     <li class="p-15">
                                         <div class="box p-15 mb-0 d-block bb-2 border-warning">
-                                            <span class="pull-right badge badge-warning">Fix</span>
-                                            <span class="font-size-14 text-line">windshield </span>
+                                            <span
+                                                class="pull-right badge @if ($inspection->tyre_condition == 'N/A') badge-warning @elseif($inspection->tyre_condition == 'Fix')  badge-danger @else badge-success @endif">{{ $inspection->tyre_condition }}</span>
+                                            <span class="font-size-14 text-line">tyre_condition</span>
                                         </div>
                                     </li>
                                     <li class="p-15">
                                         <div class="box p-15 mb-0 d-block bb-2 border-warning">
-                                            <span class="pull-right badge badge-warning">Fix</span>
-                                            <span class="font-size-14 text-line">windshield </span>
+                                            <span
+                                                class="pull-right badge @if ($inspection->spear_wheel == 'N/A') badge-warning @elseif($inspection->spear_wheel == 'Fix')  badge-danger @else badge-success @endif">{{ $inspection->spear_wheel }}</span>
+                                            <span class="font-size-14 text-line">spear_wheel</span>
                                         </div>
                                     </li>
                                     <li class="p-15">
                                         <div class="box p-15 mb-0 d-block bb-2 border-warning">
-                                            <span class="pull-right badge badge-warning">Fix</span>
-                                            <span class="font-size-14 text-line">windshield </span>
+                                            <span
+                                                class="pull-right badge @if ($inspection->toolkit == 'N/A') badge-warning @elseif($inspection->toolkit == 'Fix')  badge-danger @else badge-success @endif">{{ $inspection->toolkit }}</span>
+                                            <span class="font-size-14 text-line">toolkit</span>
                                         </div>
                                     </li>
                                     <li class="p-15">
                                         <div class="box p-15 mb-0 d-block bb-2 border-warning">
-                                            <span class="pull-right badge badge-warning">Fix</span>
-                                            <span class="font-size-14 text-line">windshield </span>
+                                            <span
+                                                class="pull-right badge @if ($inspection->radio == 'N/A') badge-warning @elseif($inspection->radio == 'Fix')  badge-danger @else badge-success @endif">{{ $inspection->radio }}</span>
+                                            <span class="font-size-14 text-line">radio</span>
                                         </div>
                                     </li>
 
@@ -276,129 +285,103 @@
                             </div>
                             <div class="box-body p-10">
                                 <ul class="todo-list">
-                                    <li class="b-1 p-0 mb-15">
-                                        <div class="position-relative p-20">
-                                            <!-- drag handle -->
-                                            <div class="handle handle2"></div>
-                                            <!-- checkbox -->
-                                            <input type="checkbox" id="basic_checkbox_19" class="filled-in">
-                                            <label for="basic_checkbox_19" class="mb-0 h-15 ml-15"></label>
-                                            <!-- todo text -->
-                                            <span class="text-line font-size-14">Phasellus interdum</span>
-                                            <!-- General tools such as edit or delete-->
-                                            <div class="pull-right d-block text-dark flexbox">
-                                                <a href="#" data-toggle="tooltip" data-container="body" title=""
-                                                    data-original-title="Edit"><i class="fa fa-edit"></i></a>
-                                                <a href="#" data-toggle="tooltip" data-container="body" title=""
-                                                    data-original-title="Remove"><i class="fa fa-trash-o"></i></a>
-                                            </div>
-                                            <div class="mt-5 ml-50 pl-5"><em>21/06/2018</em></div>
-                                        </div>
-                                    </li>
-                                    <li class="b-1 p-0 mb-15">
-                                        <div class="position-relative p-20">
-                                            <!-- drag handle -->
-                                            <div class="handle handle2"></div>
-                                            <!-- checkbox -->
-                                            <input type="checkbox" id="basic_checkbox_20" class="filled-in">
-                                            <label for="basic_checkbox_20" class="mb-0 h-15 ml-15"></label>
-                                            <!-- todo text -->
-                                            <span class="text-line font-size-14">Floor cool cinders</span>
-                                            <!-- General tools such as edit or delete-->
-                                            <div class="pull-right d-block text-dark flexbox">
-                                                <a href="#" data-toggle="tooltip" data-container="body" title=""
-                                                    data-original-title="Edit"><i class="fa fa-edit"></i></a>
-                                                <a href="#" data-toggle="tooltip" data-container="body" title=""
-                                                    data-original-title="Remove"><i class="fa fa-trash-o"></i></a>
-                                            </div>
-                                            <div class="mt-5 ml-50 pl-5"><em>21/06/2018</em></div>
-                                        </div>
-                                    </li>
-                                    <li class="b-1 p-0 mb-15">
-                                        <div class="position-relative p-20">
-                                            <!-- drag handle -->
-                                            <div class="handle handle2"></div>
-                                            <!-- checkbox -->
-                                            <input type="checkbox" id="basic_checkbox_21" class="filled-in">
-                                            <label for="basic_checkbox_21" class="mb-0 h-15 ml-15"></label>
-                                            <!-- todo text -->
-                                            <span class="text-line font-size-14">Floor cool cinders</span>
-                                            <!-- General tools such as edit or delete-->
-                                            <div class="pull-right d-block text-dark flexbox">
-                                                <a href="#" data-toggle="tooltip" data-container="body" title=""
-                                                    data-original-title="Edit"><i class="fa fa-edit"></i></a>
-                                                <a href="#" data-toggle="tooltip" data-container="body" title=""
-                                                    data-original-title="Remove"><i class="fa fa-trash-o"></i></a>
-                                            </div>
-                                            <div class="mt-5 ml-50 pl-5"><em>21/06/2018</em></div>
-                                        </div>
-                                    </li>
+                                    @foreach ($tasks as $task)
+                                        <li class="b-1 p-0 mb-15">
+                                            <div class="position-relative p-20">
+                                                <!-- drag handle -->
+                                                <div class="handle handle2"></div>
+                                                <!-- checkbox -->
+                                                <input type="checkbox" id="basic_checkbox_{{ $task->id }}"
+                                                    class="filled-in">
+                                                <label for="basic_checkbox_{{ $task->id }}"
+                                                    class="mb-0 h-15 ml-15"></label>
+                                                <!-- todo text -->
+                                                <span class="text-line font-size-14">{{ $task->todo }}</span>
+                                                <!-- General tools such as edit or delete-->
+                                                <div class="pull-right text-dark flexbox">
+                                                    <a href="#" data-toggle="modal" data-target="#editTaskModal"
+                                                        data-container="body" title="" data-original-title="Edit"><i
+                                                            class="fa fa-edit"></i></a>
 
+                                                    <!-- modal -->
+                                                    <div id="editTaskModal" class="modal fade" tabindex="-1"
+                                                        role="dialog" aria-labelledby="myModalLabel" style="display: none;"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="myModalLabel">Task
+                                                                    </h5>
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-hidden="true">×</button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form method="POST"
+                                                                        action="{{ route('tasks.update', $task->id) }}">
+                                                                        @csrf
+                                                                        @method('PUT')
+                                                                        <div class="box-body">
+
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label>Edit Task</label>
+                                                                                        <input type="hidden"
+                                                                                            name="sessionId"
+                                                                                            value="{{ $session->id }}"
+                                                                                            class="form-control"
+                                                                                            placeholder="e.g Replace oil filter">
+                                                                                        <input type="text" name="todo"
+                                                                                            value="{{ $task->todo }}"
+                                                                                            class="form-control"
+                                                                                            placeholder="e.g Replace oil filter">
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <!-- /.box-body -->
+                                                                        <div class="box-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-rounded btn-primary btn-outline"
+                                                                                data-dismiss="modal">
+                                                                                Cancel
+                                                                            </button>&nbsp; &nbsp;
+                                                                            <button type="submit" href="inspection.php"
+                                                                                class="btn btn-rounded btn-warning btn-outline mr-1">
+                                                                                <i class="ti-save-alt"></i> Update
+                                                                            </button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+
+                                                            </div>
+                                                            <!-- /.modal-content -->
+                                                        </div>
+                                                        <!-- /.modal-dialog -->
+                                                    </div>
+
+                                                    <form action="{{ route('task.delete', $task->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit"
+                                                            onclick="return confirm('Are you sure you want to delete this task?')"
+                                                            data-toggle="tooltip" data-container="body" title=""
+                                                            data-original-title="Remove"
+                                                            style="background:transparent;color: #a5b2cb;border:none;"><i
+                                                                class="fa fa-trash-o"></i></button>
+                                                    </form>
+                                                </div>
+                                                <div class="mt-5 ml-50 pl-5"><em>{{ $task->updated_at }}</em></div>
+                                            </div>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                             <!-- /.box-body -->
                         </div>
-                        <div class="box box-solid box-primary">
-                            <div class="box-header with-border">
-                                <h4 class="box-title">Comments</h4>&nbsp; &nbsp;
-                                <button type="button"
-                                    class="waves-effect waves-light btn btn-outline btn-rounded btn-warning mb-5 btn-sm"
-                                    data-toggle="modal" data-target="#commentModal">Add comment</button>
-                                <ul class="box-controls pull-right">
-                                    <li><a class="box-btn-close" href="#"></a></li>
-                                    <li><a class="box-btn-slide" href="#"></a></li>
-                                    <li><a class="box-btn-fullscreen" href="#"></a></li>
-                                </ul>
-                            </div>
-                            <div class="box-body p-10">
-                                <ul class="todo-list">
-                                    <li class="b-1 p-0 mb-15">
-                                        <div class="position-relative p-20">
-                                            <!-- todo text -->
-                                            <span class="text-line font-size-14">Phasellus interdum</span>
-                                            <!-- General tools such as edit or delete-->
-                                            <div class="pull-right d-block text-dark flexbox">
-                                                <a href="#" data-toggle="tooltip" data-container="body" title=""
-                                                    data-original-title="Edit"><i class="fa fa-edit"></i></a>
-                                                <a href="#" data-toggle="tooltip" data-container="body" title=""
-                                                    data-original-title="Remove"><i class="fa fa-trash-o"></i></a>
-                                            </div>
-                                            <div class="mt-5 ml-50 pl-5"><em>21/06/2018</em></div>
-                                        </div>
-                                    </li>
-                                    <li class="b-1 p-0 mb-15">
-                                        <div class="position-relative p-20">
-                                            <!-- todo text -->
-                                            <span class="text-line font-size-14">Floor cool cinders</span>
-                                            <!-- General tools such as edit or delete-->
-                                            <div class="pull-right d-block text-dark flexbox">
-                                                <a href="#" data-toggle="tooltip" data-container="body" title=""
-                                                    data-original-title="Edit"><i class="fa fa-edit"></i></a>
-                                                <a href="#" data-toggle="tooltip" data-container="body" title=""
-                                                    data-original-title="Remove"><i class="fa fa-trash-o"></i></a>
-                                            </div>
-                                            <div class="mt-5 ml-50 pl-5"><em>21/06/2018</em></div>
-                                        </div>
-                                    </li>
-                                    <li class="b-1 p-0 mb-15">
-                                        <div class="position-relative p-20">
-                                            <!-- todo text -->
-                                            <span class="text-line font-size-14">Floor cool cinders</span>
-                                            <!-- General tools such as edit or delete-->
-                                            <div class="pull-right d-block text-dark flexbox">
-                                                <a href="#" data-toggle="tooltip" data-container="body" title=""
-                                                    data-original-title="Edit"><i class="fa fa-edit"></i></a>
-                                                <a href="#" data-toggle="tooltip" data-container="body" title=""
-                                                    data-original-title="Remove"><i class="fa fa-trash-o"></i></a>
-                                            </div>
-                                            <div class="mt-5 ml-50 pl-5"><em>21/06/2018</em></div>
-                                        </div>
-                                    </li>
 
-                                </ul>
-                            </div>
-                            <!-- /.box-body -->
-                        </div>
                     </div>
                 </div>
                 <!-- /.row -->
@@ -408,7 +391,110 @@
         </div>
     </div>
 
-    @yield('footer')
+    <footer class="main-footer">
+        <div class="pull-right d-none d-sm-inline-block">
+            <ul class="nav nav-primary nav-dotted nav-dot-separated justify-content-center justify-content-md-end">
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0)">FAQ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Purchase Now</a>
+                </li>
+            </ul>
+        </div>
+        &copy; 2021 <a href="https://www.codeisystems.co.ke">Codei systems</a>. All Rights Reserved.
+    </footer>
+
+
+    <!-- modal -->
+    <div id="taskModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Add task</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{{ route('tasks.store', $inspection->id) }}">
+                        @csrf
+                        <div class="box-body">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Task</label>
+                                        <input type="hidden" name="sessionId" value="{{ $session->id }}"
+                                            class="form-control" placeholder="e.g Replace oil filter">
+                                        <input type="text" name="todo" class="form-control"
+                                            placeholder="e.g Replace oil filter">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+                            <button type="button" class="btn btn-rounded btn-primary btn-outline" data-dismiss="modal">
+                                Cancel
+                            </button>&nbsp; &nbsp;
+                            <button type="submit" href="inspection.php"
+                                class="btn btn-rounded btn-warning btn-outline mr-1">
+                                <i class="ti-save-alt"></i> Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <!-- modal -->
+    <div id="commentModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Add comments</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <form class="form" action="inspection.php">
+                        <div class="box-body">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Comments</label>
+                                        <input type="text" class="form-control" placeholder="Comment goes here">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+                            <button type="button" class="btn btn-rounded btn-primary btn-outline" data-dismiss="modal">
+                                Cancel
+                            </button>&nbsp; &nbsp;
+                            <button type="submit" href="inspection.php"
+                                class="btn btn-rounded btn-warning btn-outline mr-1">
+                                <i class="ti-save-alt"></i> Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
 
     <div id="chat-box-body">
         <div id="chat-circle" class="waves-effect waves-circle btn btn-circle btn-lg btn-warning l-h-70">

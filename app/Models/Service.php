@@ -18,4 +18,10 @@ class Service extends Model
         'vehicle_id'
     ];
 
+
+    public function component()
+    {
+        return $this->hasOne(Component::class);
+    }
+
 }

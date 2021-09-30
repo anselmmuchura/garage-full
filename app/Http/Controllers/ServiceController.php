@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Vehicle;
 use App\Models\Service;
+use App\Models\Todo;
 use App\Models\Components;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -57,7 +58,7 @@ class ServiceController extends Controller
 
         //dd($data);
         
-        $createSession = Service::create([
+        $createdSession = Service::create([
             'kilometers' => $data['milleage'],
             'fuel' => $data['fuel'],
             'timeIn' => $data['timeIn'],
@@ -66,7 +67,22 @@ class ServiceController extends Controller
             'vehicle_id' => $data['vehicle_id'],
         ]);
 
-        if($createSession){
+        $createComponent = Components::create([
+            'rear_view_mirror' => 'N/A',
+            'windshield' => 'N/A',
+            'air_conditioning_operation' => 'N/A',
+            'dash_board_instrumentation' => 'N/A',
+            'internal_lighting' => 'N/A',
+            'floor_carpeting' => 'N/A',
+            'tyre_condition' => 'N/A',
+            'spear_wheel' => 'N/A',
+            'toolkit' => 'N/A',
+            'radio' => 'N/A',
+            'vehicle_id' => $data['vehicle_id'],
+            'service_id' => $createdSession->id
+        ]);
+
+        if($createdSession){
             Alert::success('Success', 'Session Added!');
             return redirect()->back();
         }else{
@@ -83,8 +99,10 @@ class ServiceController extends Controller
 
         $vehicle = Vehicle::where('id', $session->vehicle_id)->first();
 
-        $inspection = Components::where('vehicle_id', $vehicle->id)->where('service_id', $sessionId)->first();
+        $component = Components::where('vehicle_id', $vehicle->id)->where('service_id', $sessionId)->first();
 
-        return view('sessions.show', ['session'=> $session, 'vehicle' => $vehicle, 'inspection' => $inspection, 'inspection' => $inspection]);
+        $tasks = Todo::where('component_id', $component->id)->get();
+
+        return view('sessions.show', ['session'=> $session, 'vehicle' => $vehicle, 'inspection' => $component, 'tasks' => $tasks]);
     }
 }

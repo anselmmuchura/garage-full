@@ -80,53 +80,57 @@ class VehicleController extends Controller
      * @param  \App\Vehicle  $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function show(Vehicle $vehicle)
+    public function view(Int $id)
     {
-        return view('vehicles.show', compact('vehicle'));
+        $client = Vehicle::find($id)->first();
+
+        $sessions = $client->services;
+        
+        return view('clients.view', ['client'=> $client, 'sessions' => $sessions]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Vehicle  $vehicle
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Vehicle $vehicle)
-    {
-        return view('vehicles.edit', compact('vehicle'));
-    }
+    // /**
+    //  * Show the form for editing the specified resource.
+    //  *
+    //  * @param  \App\Vehicle  $vehicle
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function edit(Vehicle $vehicle)
+    // {
+    //     return view('vehicles.edit', compact('vehicle'));
+    // }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Vehicle  $vehicle
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Vehicle $vehicle)
-    {
-        request()->validate([
-            'name' => 'required',
-            'detail' => 'required',
-        ]);
+    // /**
+    //  * Update the specified resource in storage.
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @param  \App\Vehicle  $vehicle
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function update(Request $request, Vehicle $vehicle)
+    // {
+    //     request()->validate([
+    //         'name' => 'required',
+    //         'detail' => 'required',
+    //     ]);
 
-        $vehicle->update($request->all());
+    //     $vehicle->update($request->all());
 
-        return redirect()->route('vehicles.index')
-            ->with('success', 'Vehicle updated successfully');
-    }
+    //     return redirect()->route('vehicles.index')
+    //         ->with('success', 'Vehicle updated successfully');
+    // }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Vehicle  $vehicle
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Vehicle $vehicle)
-    {
-        $vehicle->delete();
+    // /**
+    //  * Remove the specified resource from storage.
+    //  *
+    //  * @param  \App\Vehicle  $vehicle
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function destroy(Vehicle $vehicle)
+    // {
+    //     $vehicle->delete();
 
-        return redirect()->route('vehicles.index')
-            ->with('success', 'Vehicle deleted successfully');
-    }
+    //     return redirect()->route('vehicles.index')
+    //         ->with('success', 'Vehicle deleted successfully');
+    // }
 }

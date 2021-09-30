@@ -32,10 +32,14 @@ Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'
 
 Route::middleware('auth')->group(function(){
     Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->middleware(['is_verify_email'])->name('dashboard');
-    Route::get('/dashboard/clients', [App\Http\Controllers\OwnerController::class, 'index'])->name('clients.index');
+    Route::get('/dashboard/client/profile/{id}', [App\Http\Controllers\VehicleController::class, 'view'])->name('client.profile');
     Route::post('/dashboard/addVehicle', [App\Http\Controllers\VehicleController::class, 'store'])->name('storeVehicle');
 
     Route::get('/dashboard/sessions', [App\Http\Controllers\ServiceController::class, 'index'])->name('sessions.index');
     Route::post('/dashboard/addSession', [App\Http\Controllers\ServiceController::class, 'store'])->name('sessions.store');
     Route::get('/dashboard/session/{id}', [App\Http\Controllers\ServiceController::class, 'view'])->name('session.view');
+
+    Route::post('/dashboard/addTask/{id}', [App\Http\Controllers\TodoController::class, 'store'])->name('tasks.store');
+    Route::put('/dashboard/updateTask/{id}', [App\Http\Controllers\TodoController::class, 'update'])->name('tasks.update');
+    Route::delete('/dashboard/deleteTask/{id}', [App\Http\Controllers\TodoController::class, 'destroy'])->name('task.delete');
 });
