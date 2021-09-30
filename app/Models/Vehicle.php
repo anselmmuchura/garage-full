@@ -16,11 +16,13 @@ class Vehicle extends Model
         'model',
         'engineNo',
         'vinNo',
-        'owner_id'
+        'fullName',
+        'email',
+        'phoneNumber',
     ];
 
-    public function owner()
+    public function service()
     {
-        return $this->hasOne(Owner::class);
+        return $this->hasMany(Service::class);
     }
 }

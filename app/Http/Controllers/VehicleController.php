@@ -24,7 +24,7 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        $vehicles = Vehicle::latest()->paginate(5);
+        $vehicles = Vehicle::latest()->paginate(20);
         return view('vehicles.index', compact('vehicles'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -55,12 +55,6 @@ class VehicleController extends Controller
         ]);
            
         $data = $request->all();
-
-        $createOwner = Owner::create([
-            'fullName' => $data['name'],
-            'email' => $data['email'],
-            'phoneNumber' => $data['phone'],
-        ]);
         
         $createVehicle = Vehicle::create([
             'regNo' => $data['regNo'],
@@ -68,7 +62,9 @@ class VehicleController extends Controller
             'model' => $data['model'],
             'engineNo' => $data['engineNo'],
             'vinNo' => $data['vinNo'],
-            'owner_id' => Owner::where('email', $data['email'])->first()->id,
+            'fullName' => $data['name'],
+            'email' => $data['email'],
+            'phoneNumber' => $data['phone'],
         ]);
         
         Alert::success('You have been logged out.', 'Good bye!');

@@ -21,7 +21,9 @@ class CreateVehiclesTable extends Migration
             $table->string('model');
             $table->bigInteger('engineNo');
             $table->string('vinNo');
-            $table->foreignId('owner_id')->constrained('owners')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('fullName');
+            $table->string('email');
+            $table->bigInteger('phoneNumber');
             $table->timestamps();
         });
     }
