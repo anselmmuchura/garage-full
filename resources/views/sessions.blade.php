@@ -131,13 +131,13 @@
             <div class="content-header">
                 <div class="d-flex align-items-center">
                     <div class="mr-auto">
-                        <h3 class="page-title">Clients</h3>
+                        <h3 class="page-title">Sessions</h3>
                         <div class="d-inline-block align-items-center">
                             <nav>
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
-                                    <li class="breadcrumb-item" aria-current="page">clients</li>
-                                    <li class="breadcrumb-item active" aria-current="page">Client list</li>
+                                    <li class="breadcrumb-item" aria-current="page">sessions</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Session list</li>
                                 </ol>
                             </nav>
                         </div>
@@ -153,53 +153,61 @@
 
                         <div class="box">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Client list</h3> &nbsp; &nbsp;
+                                <h3 class="box-title">Session list</h3> &nbsp; &nbsp;
                                 <button type="button"
                                     class="waves-effect waves-light btn btn-outline btn-rounded btn-warning mb-5 btn-sm"
-                                    data-toggle="modal" data-target="#myModal">Add new client</button>
+                                    data-toggle="modal" data-target="#myModal">Add new Session</button>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="table-responsive">
-                                    <table id="example1" class="table table-bordered table-striped">
+                                    <table id="complex_header" class="table table-striped table-bordered display"
+                                        style="width:100%">
                                         <thead>
                                             <tr>
                                                 <th>Registration</th>
                                                 <th>Make</th>
-                                                <th>Model</th>
-                                                <th>Owner</th>
-                                                <th>last serviced</th>
+                                                <th>Kilometers</th>
+                                                <th>fuel</th>
+                                                <th>TimeIn</th>
+                                                <th>TimeOut</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if ($clients->count() > 0)
-                                                @foreach ($clients as $client)
+                                            @if ($sessions->count() > 0)
+                                                @foreach ($sessions as $session)
                                                     <tr>
-                                                        <td>{{ $client->regNo }}</td>
-                                                        <td>{{ $client->make }}</td>
-                                                        <td>{{ $client->model }}</td>
+                                                        <td>{{ $session->regNo }}</td>
+                                                        <td>{{ $session->make }}</td>
+                                                        <td>{{ $session->kilometers }}</td>
                                                         <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div>
-                                                                    <a href="#"
-                                                                        class="text-dark font-weight-600 hover-primary mb-1 font-size-16">{{ $client->fullName }}</a>
-                                                                    <span
-                                                                        class="text-fade d-block">{{ $client->email }}</span>
-                                                                </div>
-                                                            </div>
+                                                            {{ $session->fuel }} %
                                                         </td>
-                                                        <td>@if ($client->timeOut == '')N/A @else{{ $client->timeOut }} @endif</td>
-                                                        <td><a href="profile.php"
-                                                                class="waves-effect waves-light btn btn-primary btn-circle mx-5"><span
-                                                                    class="icon-Arrow-right"><span
+                                                        <td>{{ $session->timeIn }}</td>
+                                                        <td>{{ $session->timeOut }}</td>
+                                                        <td class="text-right" style="display:flex;">
+                                                            <a href="{{ route('session.view', $session->id) }}"
+                                                                class="waves-effect waves-light btn btn-primary-light btn-circle"><span
+                                                                    class="icon-Settings-1 font-size-18"><span
                                                                         class="path1"></span><span
-                                                                        class="path2"></span></span></a></td>
+                                                                        class="path2"></span></span></a>
+                                                            <a href="#"
+                                                                class="waves-effect waves-light btn btn-primary-light btn-circle mx-5"><span
+                                                                    class="icon-Write"><span
+                                                                        class="path1"></span><span
+                                                                        class="path2"></span></span></a>
+                                                            <a href="#"
+                                                                class="waves-effect waves-light btn btn-primary-light btn-circle"><span
+                                                                    class="icon-Trash1 font-size-18"><span
+                                                                        class="path1"></span><span
+                                                                        class="path2"></span></span></a>
+                                                        </td>
                                                     </tr>
                                                 @endforeach
                                             @else
                                                 <tr>
-                                                    <td colspan="6" style="text-align: center;">No clients at the moment
+                                                    <td colspan="7" style="text-align: center;">No Sessions at the moment
                                                     </td>
                                                 </tr>
                                             @endif
@@ -209,9 +217,10 @@
                                             <tr>
                                                 <th>Registration</th>
                                                 <th>Make</th>
-                                                <th>Model</th>
-                                                <th>Owner</th>
-                                                <th>last serviced</th>
+                                                <th>Kilometers</th>
+                                                <th>fuel</th>
+                                                <th>TimeIn</th>
+                                                <th>TimeOut</th>
                                                 <th>Action</th>
                                             </tr>
                                         </tfoot>
@@ -245,68 +254,61 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="{{ route('storeVehicle') }}">
+                    <form method="POST" action="{{ route('sessions.store') }}">
                         @csrf
                         <div class="box-body">
-                            <h4 class="box-title text-info"><i class="ti-user mr-15"></i> Personal Info</h4>
+                            <h4 class="box-title text-info"><i class="ti-user mr-15"></i>Session Info</h4>
                             <hr class="my-15">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Full name</label>
-                                        <input type="text" name="name" class="form-control" placeholder="First Name">
+                                        <label>Time In</label>
+                                        <input class="form-control" type="date" name="timeIn" required />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Phone number</label>
-                                        <input type="tel" name="phone" class="form-control" placeholder="Phone Number">
+                                        <label>Time Promised</label>
+                                        <input class="form-control" type="date" name="timeOut" required />
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>E-mail</label>
-                                        <input type="email" name="email" class="form-control" placeholder="E-mail">
+                                        <label>Milleage</label>
+                                        <input type="number" name="milleage" class="form-control" placeholder="Milleage"
+                                            required />
                                     </div>
                                 </div>
-
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Fuel (%)</label>
+                                        <input type="number" name="fuel" max="100" min="0" class="form-control"
+                                            placeholder="Fuel" required />
+                                    </div>
+                                </div>
                             </div>
-                            <br>
-                            <h4 class="box-title text-info"><i class="ti-save mr-15"></i> Vehicle info</h4>
-                            <hr class="my-15">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Registration</label>
-                                        <input type="text" name="regNo" class="form-control"
-                                            placeholder="Registration number">
+                                        <label>Battery</label>
+                                        <input type="text" name="battery" class="form-control" placeholder="Battery"
+                                            required />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Make</label>
-                                        <input type="text" name="make" class="form-control" placeholder="Make">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Model</label>
-                                        <input type="text" name="model" class="form-control" placeholder="Model">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>VIN number</label>
-                                        <input type="text" name="vinNo" class="form-control" placeholder="VIN number">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Engine number</label>
-                                        <input type="text" name="engineNo" class="form-control"
-                                            placeholder="Engine number">
+                                        <label>Vehicle</label>
+                                        <select name="vehicle_id" class="form-control select2"
+                                            style="width: 100%;max-height: 50px; overflow: auto;" tabindex="-1"
+                                            aria-hidden="true" @if ($vehicles->count() < 1) disabled @endif>
+                                            @if ($vehicles->count() > 0)
+                                                @foreach ($vehicles as $vehicle)
+                                                    <option value="{{ $vehicle->id }}">{{ $vehicle->regNo }}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
                                     </div>
                                 </div>
                             </div>

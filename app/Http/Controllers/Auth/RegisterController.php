@@ -69,16 +69,24 @@ class RegisterController extends Controller
   
         $token = Str::random(64);
   
-        UserVerify::create([
-              'user_id' => $createUser->id, 
-              'token' => $token
-            ]);
+        if(UserVerify::create(['user_id' => $createUser->id, 'token' => $token ])){
+            $mailSent = Mail::send('email.emailVerificationEmail', ['token' => $token], function($message) use($request){
+                $message->to($request->email);
+                $message->subject('Email Verification Mail');
+            });
+            if($mailSent){
+                Alert::success('Account created Successfully', 'Check your email and veify account!');
+                return redirect("login");
+            }else{
+                Alert::error('Error', 'Could not send verification details to your email!');
+                return redirect("register");
+            }
+        }else{
+            Alert::error('Error', 'Could not generate verification details!');
+            return redirect("register");
+        }
   
-        Mail::send('email.emailVerificationEmail', ['token' => $token], function($message) use($request){
-              $message->to($request->email);
-              $message->subject('Email Verification Mail');
-          });
-        Alert::success('Account created Successfully', 'Check your email and veify account!');
-        return redirect("login")->withSuccess('Great! You have Successfully loggedin');
+    
+        
     }
 }

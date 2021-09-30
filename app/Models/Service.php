@@ -13,7 +13,8 @@ class Service extends Model
         'kilometers',
         'fuel',
         'timeIn',
-        'timeIn',
+        'timeOut',
+        'battery',
         'vehicle_id'
     ];
 

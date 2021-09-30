@@ -38,7 +38,6 @@ class VerificationController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
     }
@@ -56,8 +55,8 @@ class VerificationController extends Controller
             if(!$user->is_email_verified) {
                 $verifyUser->user->is_email_verified = 1;
                 $verifyUser->user->save();
-                Mail::send('email.emailVerified', ['token' => $token], function($message) use($request){
-                    $message->to($request->email);
+                Mail::send('email.emailVerified', ['token' => $token], function($message){
+                    $message->to($verifyUser->user->email);
                     $message->subject('Email Verification Mail');
                 });
                 $message = "Your e-mail is verified. You can now login.";

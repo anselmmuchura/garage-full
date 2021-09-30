@@ -42,11 +42,14 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+        
     }
 
     public function index()
-    {
-        
+    { 
+        if (Auth::check()) {
+            return redirect()->intended('dashboard');
+        }
         return view('auth.login');
     }
 
@@ -60,7 +63,7 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             Alert::success('Welcome', 'You have Successfully loggedin');
-            return redirect()->intended('dashboard');
+            return redirect('dashboard');
         }
         Alert::warning('Warning', 'Oppes! You have entered invalid credentials');
         return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
@@ -70,6 +73,6 @@ class LoginController extends Controller
         Session::flush();
         Auth::logout();
         Alert::success('You have been logged out.', 'Good bye!');
-        return Redirect('login');
+        return redirect('login');
     }
 }

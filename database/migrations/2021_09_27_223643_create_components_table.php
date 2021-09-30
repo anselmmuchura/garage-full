@@ -27,6 +27,7 @@ class CreateComponentsTable extends Migration
             $table->string('toolkit');
             $table->string('radio');
             $table->foreignId('vehicle_id')->constrained('vehicles')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('service_id')->constrained('services')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
