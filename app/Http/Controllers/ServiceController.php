@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Vehicle;
 use App\Models\Service;
+use App\Models\Comment;
 use App\Models\Todo;
 use App\Models\Components;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -43,7 +44,6 @@ class ServiceController extends Controller
         $validator = Validator::make($request->all(), [
             'milleage'=> 'required',
             'fuel'=> 'required',
-            'timeIn'=> 'required',
             'timeOut'=> 'required',
             'battery'=> 'required',
             'vehicle_id' => 'required'
@@ -61,7 +61,6 @@ class ServiceController extends Controller
         $createdSession = Service::create([
             'kilometers' => $data['milleage'],
             'fuel' => $data['fuel'],
-            'timeIn' => $data['timeIn'],
             'timeOut' => $data['timeOut'],
             'battery' => $data['battery'],
             'vehicle_id' => $data['vehicle_id'],
@@ -81,6 +80,11 @@ class ServiceController extends Controller
             'vehicle_id' => $data['vehicle_id'],
             'service_id' => $createdSession->id
         ]);
+
+        Mail::send('email.vehicleAdded', function($message){
+            $message->to(Vehicle::find($data['vehicle_id'])->first()->email);
+            $message->subject('Vehicle Registration');
+        });
 
         if($createdSession){
             Alert::success('Success', 'Session Added!');
@@ -103,6 +107,42 @@ class ServiceController extends Controller
 
         $tasks = Todo::where('component_id', $component->id)->get();
 
-        return view('sessions.show', ['session'=> $session, 'vehicle' => $vehicle, 'inspection' => $component, 'tasks' => $tasks]);
+        $comments = Comment::where('component_id', $component->id)->get();
+
+        return view('sessions.show', ['session'=> $session, 'vehicle' => $vehicle, 'inspection' => $component, 'tasks' => $tasks, 'comments' => $comments]);
+    }
+
+    public function update(Request $request, Int $id)
+    {  
+        $validator = Validator::make($request->all(), [
+            'milleage'=> 'required',
+            'fuel'=> 'required',
+            'timeOut'=> 'required',
+            'battery'=> 'required',
+            'vehicle_id' => 'required'
+        ]);
+
+        if(!$validator){
+            Alert::error('Error', 'The system is unable to create Task. Try again Later!');
+            return redirect()->back()->withErrors($validator)
+            ->withInput();
+        }
+        $data = $validator->validated();
+
+        if (Service::where('id', $id)->exists()) {
+            $service = Service::find($id);
+            $service->kilometers = $data['milleage'];
+            $service->fuel = $data['fuel'];
+            $service->timeOut = $data['timeOut'];
+            $service->battery = $data['battery'];
+            $service->vehicle_id = $data['vehicle_id'];
+            $service->save();
+
+            Alert::success('Success', 'Session Updated!');
+            return redirect()->route('sessions.index');
+        }else{
+            Alert::error('Error', 'The system is unable to update Task. Try again Later!');
+            return redirect()->back();
+        } 
     }
 }

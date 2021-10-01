@@ -12,7 +12,6 @@ class Service extends Model
     protected $fillable = [
         'kilometers',
         'fuel',
-        'timeIn',
         'timeOut',
         'battery',
         'vehicle_id'
@@ -22,6 +21,11 @@ class Service extends Model
     public function component()
     {
         return $this->hasOne(Component::class);
+    }
+
+    public function vehicle()
+    {
+        return $this->belongsTo(Vehicle::class);
     }
 
 }

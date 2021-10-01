@@ -90,6 +90,40 @@ class TodoController extends Controller
         } 
     }
 
+    public function complete(Request $request, Int $id)
+    {  
+        $validator = Validator::make($request->all(), [
+            'completed' => 'required',
+            'sessionId' => 'required'
+        ]);
+
+        if(!$validator){
+            Alert::error('Error', 'The system is unable to update Task. Try again Later!');
+            return redirect()->back()->withErrors($validator)
+            ->withInput();
+        }
+        $data = $validator->validated();
+
+        
+
+        if (Todo::where('id', $id)->exists()) {
+            $task = Todo::find($id);
+            if($data['completed'] === '0'){
+                $task->checked = true;
+            }else{
+                $task->checked = false;
+            }
+            $task->save();
+            //dd($task->checked);
+
+            Alert::success('Success', 'Task Updated!');
+            return redirect()->route('session.view', $data['sessionId']);
+        }else{
+            Alert::error('Error', 'The system is unable to update Task. Try again Later!');
+            return redirect()->back();
+        } 
+    }
+
     public function destroy ($id) {
 
         if (Todo::where('id', $id)->exists()) {

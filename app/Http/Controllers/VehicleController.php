@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
+use Mail;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class VehicleController extends Controller
@@ -68,6 +69,7 @@ class VehicleController extends Controller
             'email' => $data['email'],
             'phoneNumber' => $data['phone'],
         ]);
+
         
         Alert::success('Success', 'Vehicle Added!');
         return redirect("dashboard")->withSuccess('Success! Vehicle Added');

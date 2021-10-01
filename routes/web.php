@@ -38,8 +38,17 @@ Route::middleware('auth')->group(function(){
     Route::get('/dashboard/sessions', [App\Http\Controllers\ServiceController::class, 'index'])->name('sessions.index');
     Route::post('/dashboard/addSession', [App\Http\Controllers\ServiceController::class, 'store'])->name('sessions.store');
     Route::get('/dashboard/session/{id}', [App\Http\Controllers\ServiceController::class, 'view'])->name('session.view');
+    Route::put('/dashboard/updateSession/{id}', [App\Http\Controllers\ServiceController::class, 'update'])->name('sessions.update');
 
     Route::post('/dashboard/addTask/{id}', [App\Http\Controllers\TodoController::class, 'store'])->name('tasks.store');
     Route::put('/dashboard/updateTask/{id}', [App\Http\Controllers\TodoController::class, 'update'])->name('tasks.update');
+    Route::put('/dashboard/completeTask/{id}', [App\Http\Controllers\TodoController::class, 'complete'])->name('tasks.complete');
     Route::delete('/dashboard/deleteTask/{id}', [App\Http\Controllers\TodoController::class, 'destroy'])->name('task.delete');
+
+    Route::post('/dashboard/addComment/{id}', [App\Http\Controllers\CommentController::class, 'store'])->name('comments.store');
+    Route::put('/dashboard/updateComment/{id}', [App\Http\Controllers\CommentController::class, 'update'])->name('comments.update');
+    Route::delete('/dashboard/deleteComment/{id}', [App\Http\Controllers\CommentController::class, 'destroy'])->name('comments.delete');
+
+    Route::get('/dashboard/session/{id}/inspection', [App\Http\Controllers\InspectionController::class, 'index'])->name('inspections.index');
+    Route::put('/dashboard/updateComponents/{id}', [App\Http\Controllers\ComponentsController::class, 'update'])->name('components.update');
 });

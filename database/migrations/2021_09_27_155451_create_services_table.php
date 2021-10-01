@@ -18,7 +18,6 @@ class CreateServicesTable extends Migration
             $table->id();
             $table->bigInteger('kilometers');
             $table->integer('fuel');
-            $table->date('timeIn');
             $table->date('timeOut');
             $table->string('battery');
             $table->foreignId('vehicle_id')->constrained('vehicles')->onUpdate('cascade')->onDelete('cascade');

@@ -15,6 +15,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/vendors_css.css') }}">
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" href="{{ asset('css/skin_color.css') }}">
     <link rel="stylesheet" href="{{ asset('css/users.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -34,16 +35,20 @@
     </div>
 
     <!-- Vendor JS -->
-    <script src="{{ asset('js/vendors.min.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="{{ asset('js/pages/chat-popup.js') }}"></script>
     <script src="{{ asset('assets/icons/feather-icons/feather.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor_components/datatable/datatables.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor_components/select2/dist/js/select2.full.js') }}"></script>
 
     <!-- Adnix Admin App -->
     <script src="{{ asset('js/template.js') }}"></script>
-
-    <script src="{{ asset('js/pages/data-table.js') }}"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script>
+        $.noConflict();
+        jQuery(document).ready(function($) {
+            $('.table').DataTable();
+        });
+        // Code that uses other library's $ can follow here.
+    </script>
 
 </body>
 
