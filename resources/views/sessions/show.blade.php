@@ -67,7 +67,8 @@
                         <li class="user-body">
                             <a class="dropdown-item" href="#"><i class="ti-user text-muted mr-2"></i> Profile</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ route('logout') }}"><i class="ti-lock text-muted mr-2"></i> Logout</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}"><i
+                                    class="ti-lock text-muted mr-2"></i> Logout</a>
                         </li>
                     </ul>
                 </li>
@@ -150,7 +151,8 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div>
-                                        <p>Time in :<span class="text-gray pl-10">{{ $session->created_at }}</span> </p>
+                                        <p>Time in :<span class="text-gray pl-10">{{ $session->created_at }}</span>
+                                        </p>
                                         <p>Time promised :<span class="text-gray pl-10">{{ $session->timeOut }}</span>
                                         </p>
                                         <p>Milleage :<span class="text-gray pl-10">{{ $session->kilometers }}</span>
@@ -174,7 +176,9 @@
                             <h4 class="box-title">Inspection</h4>
 
                             <ul class="box-controls pull-right">
-							    <li><a href="{{ route('inspections.index', $session->id) }}" class="waves-effect waves-light btn btn-outline btn-rounded btn-warning mb-5 btn-sm" >Perform Inspection</a></li>
+                                <li><a href="{{ route('inspections.index', $session->id) }}"
+                                        class="waves-effect waves-light btn btn-outline btn-rounded btn-warning mb-5 btn-sm">Perform
+                                        Inspection</a></li>
                                 <li><a class="box-btn-close" href="#"></a></li>
                                 <li><a class="box-btn-slide" href="#"></a></li>
                                 <li><a class="box-btn-fullscreen" href="#"></a></li>
@@ -286,207 +290,206 @@
                                                 <input type="hidden" name="completed" value="{{ $task->checked }}">
                                                 <input type="hidden" name="sessionId" value="{{ $inspection->id }}">
                                                 <input type="checkbox" id="basic_checkbox_{{ $task->id }}"
-                                                    class="filled-in" name="task" onChange="this.form.submit()" @if($task->checked === 1) checked @endif>
+                                                    class="filled-in" name="task" onChange="this.form.submit()" <blade
+                                                    if|(%24task-%3Echecked%20%3D%3D%3D%201)%20checked%20%40endif%3E%0D>
                                                 <label for="basic_checkbox_{{ $task->id }}"
                                                     class="mb-0 h-15 ml-15"></label>
                                             </form>
                                             <!-- todo text -->
-                                            <span class="text-line font-size-14">@if($task->checked === 1)<strike>{{ $task->todo }}</strike>@else {{ $task->todo }} @endif</span>
-                                            <!-- General tools such as edit or delete-->
-                                            <div class="pull-right text-dark flexbox">
-                                                <a href="#" data-toggle="modal" data-target="#editTaskModal"
-                                                    data-container="body" title="" data-original-title="Edit"><i
-                                                        class="fa fa-edit"></i></a>
+                                            <span class="text-line font-size-14">@if($task->checked ===
+                                                1)<strike>{{ $task->todo }}</strike>@else {{ $task->todo }}
+                                @endif</span>
+                                <!-- General tools such as edit or delete-->
+                                <div class="pull-right text-dark flexbox">
+                                    <a href="#" data-toggle="modal" data-target="#editTaskModal" data-container="body"
+                                        title="" data-original-title="Edit"><i class="fa fa-edit"></i></a>
 
-                                                <!-- modal -->
-                                                <div id="editTaskModal" class="modal fade" tabindex="-1" role="dialog"
-                                                    aria-labelledby="myModalLabel" style="display: none;"
-                                                    aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="myModalLabel">Task
-                                                                </h5>
-                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-hidden="true">×</button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <form method="POST"
-                                                                    action="{{ route('tasks.update', $task->id) }}">
-                                                                    @csrf
-                                                                    @method('PUT')
-                                                                    <div class="box-body">
+                                    <!-- modal -->
+                                    <div id="editTaskModal" class="modal fade" tabindex="-1" role="dialog"
+                                        aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="myModalLabel">Task
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-hidden="true">×</button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form method="POST"
+                                                        action="{{ route('tasks.update', $task->id) }}">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <div class="box-body">
 
-                                                                        <div class="row">
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label>Edit Task</label>
-                                                                                    <input type="hidden"
-                                                                                        name="sessionId"
-                                                                                        value="{{ $session->id }}"
-                                                                                        class="form-control"
-                                                                                        placeholder="e.g Replace oil filter">
-                                                                                    <input type="text" name="todo"
-                                                                                        value="{{ $task->todo }}"
-                                                                                        class="form-control"
-                                                                                        placeholder="e.g Replace oil filter">
-                                                                                </div>
-                                                                            </div>
-
-                                                                        </div>
-
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label>Edit Task</label>
+                                                                        <input type="hidden" name="sessionId"
+                                                                            value="{{ $session->id }}"
+                                                                            class="form-control"
+                                                                            placeholder="e.g Replace oil filter">
+                                                                        <input type="text" name="todo"
+                                                                            value="{{ $task->todo }}"
+                                                                            class="form-control"
+                                                                            placeholder="e.g Replace oil filter">
                                                                     </div>
-                                                                    <!-- /.box-body -->
-                                                                    <div class="box-footer">
-                                                                        <button type="button"
-                                                                            class="btn btn-rounded btn-primary btn-outline"
-                                                                            data-dismiss="modal">
-                                                                            Cancel
-                                                                        </button>&nbsp; &nbsp;
-                                                                        <button type="submit" href="inspection.php"
-                                                                            class="btn btn-rounded btn-warning btn-outline mr-1">
-                                                                            <i class="ti-save-alt"></i> Update
-                                                                        </button>
-                                                                    </div>
-                                                                </form>
+                                                                </div>
+
                                                             </div>
 
                                                         </div>
-                                                        <!-- /.modal-content -->
-                                                    </div>
-                                                    <!-- /.modal-dialog -->
-                                                </div>
-
-                                                <form
-                                                    action="{{ route('task.delete', $task->id) }}"
-                                                    method="POST">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button type="submit"
-                                                        onclick="return confirm('Are you sure you want to delete this task?')"
-                                                        data-toggle="tooltip" data-container="body" title=""
-                                                        data-original-title="Remove"
-                                                        style="background:transparent;color: #a5b2cb;border:none;"><i
-                                                            class="fa fa-trash-o"></i></button>
-                                                </form>
-                                            </div>
-                                            <div class="mt-5 ml-50 pl-5"><em>{{ $task->updated_at }}</em></div>
-                                        </div>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        <!-- /.box-body -->
-                    </div>
-
-                    <div class="box box-solid box-primary">
-                        <div class="box-header with-border">
-                            <h4 class="box-title">Comments</h4>&nbsp; &nbsp;
-                            <button type="button"
-                                class="waves-effect waves-light btn btn-outline btn-rounded btn-warning mb-5 btn-sm"
-                                data-toggle="modal" data-target="#commentModal">Add comment</button>
-                            <ul class="box-controls pull-right">
-                                <li><a class="box-btn-close" href="#"></a></li>
-                                <li><a class="box-btn-slide" href="#"></a></li>
-                                <li><a class="box-btn-fullscreen" href="#"></a></li>
-                            </ul>
-                        </div>
-                        <div class="box-body p-10">
-                            <ul class="todo-list">
-                                @foreach($comments as $comment)
-                                    <li class="b-1 p-0 mb-15">
-                                        <div class="position-relative p-20">
-                                            <!-- todo text -->
-                                            <span class="text-line font-size-14">{{ $comment->comment }}</span>
-                                            <!-- General tools such as edit or delete-->
-                                            <div class="pull-right text-dark flexbox">
-                                                <a href="#" data-toggle="modal" data-target="#commentModalUpdate"
-                                                    data-container="body" title="" data-original-title="Edit"><i
-                                                        class="fa fa-edit"></i></a>
-
-
-                                                <!-- modal -->
-                                                <div id="commentModalUpdate" class="modal fade" tabindex="-1"
-                                                    role="dialog" aria-labelledby="myModalLabel" style="display: none;"
-                                                    aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="myModalLabel">Add comments
-                                                                </h5>
-                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-hidden="true">×</button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <form method="POST"
-                                                                    action="{{ route('comments.update', $comment->id) }}">
-                                                                    @csrf
-                                                                    @method('PUT')
-                                                                    <div class="box-body">
-
-                                                                        <div class="row">
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label>Comments</label>
-                                                                                    <input type="text" name="comment"
-                                                                                        class="form-control"
-                                                                                        placeholder="Comment goes here">
-                                                                                </div>
-                                                                            </div>
-
-                                                                        </div>
-
-                                                                    </div>
-                                                                    <!-- /.box-body -->
-                                                                    <div class="box-footer">
-                                                                        <button type="button"
-                                                                            class="btn btn-rounded btn-primary btn-outline"
-                                                                            data-dismiss="modal">
-                                                                            Cancel
-                                                                        </button>&nbsp; &nbsp;
-                                                                        <button type="submit" href="inspection.php"
-                                                                            class="btn btn-rounded btn-warning btn-outline mr-1">
-                                                                            <i class="ti-save-alt"></i> Save
-                                                                        </button>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-
+                                                        <!-- /.box-body -->
+                                                        <div class="box-footer">
+                                                            <button type="button"
+                                                                class="btn btn-rounded btn-primary btn-outline"
+                                                                data-dismiss="modal">
+                                                                Cancel
+                                                            </button>&nbsp; &nbsp;
+                                                            <button type="submit" href="inspection.php"
+                                                                class="btn btn-rounded btn-warning btn-outline mr-1">
+                                                                <i class="ti-save-alt"></i> Update
+                                                            </button>
                                                         </div>
-                                                        <!-- /.modal-content -->
-                                                    </div>
-                                                    <!-- /.modal-dialog -->
+                                                    </form>
                                                 </div>
-                                                <form
-                                                    action="{{ route('comments.delete', $comment->id) }}"
-                                                    method="POST">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button type="submit"
-                                                        onclick="return confirm('Are you sure you want to delete this Comment?')"
-                                                        data-toggle="tooltip" data-container="body" title=""
-                                                        data-original-title="Remove"
-                                                        style="background:transparent;color: #a5b2cb;border:none;"><i
-                                                            class="fa fa-trash-o"></i></button>
-                                                </form>
+
                                             </div>
-                                            <div class="mt-5 ml-50 pl-5"><em>{{ $comment->updated_at }}</em></div>
+                                            <!-- /.modal-content -->
                                         </div>
-                                    </li>
-                                @endforeach
+                                        <!-- /.modal-dialog -->
+                                    </div>
 
-                            </ul>
+                                    <form action="{{ route('task.delete', $task->id) }}"
+                                        method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit"
+                                            onclick="return confirm('Are you sure you want to delete this task?')"
+                                            data-toggle="tooltip" data-container="body" title=""
+                                            data-original-title="Remove"
+                                            style="background:transparent;color: #a5b2cb;border:none;"><i
+                                                class="fa fa-trash-o"></i></button>
+                                    </form>
+                                </div>
+                                <div class="mt-5 ml-50 pl-5"><em>{{ $task->updated_at }}</em></div>
                         </div>
-                        <!-- /.box-body -->
+                        </li>
+                        @endforeach
+                        </ul>
                     </div>
-
+                    <!-- /.box-body -->
                 </div>
-            </div>
-            <!-- /.row -->
-        </section>
-        <!-- /.content -->
 
+                <div class="box box-solid box-primary">
+                    <div class="box-header with-border">
+                        <h4 class="box-title">Comments</h4>&nbsp; &nbsp;
+                        <button type="button"
+                            class="waves-effect waves-light btn btn-outline btn-rounded btn-warning mb-5 btn-sm"
+                            data-toggle="modal" data-target="#commentModal">Add comment</button>
+                        <ul class="box-controls pull-right">
+                            <li><a class="box-btn-close" href="#"></a></li>
+                            <li><a class="box-btn-slide" href="#"></a></li>
+                            <li><a class="box-btn-fullscreen" href="#"></a></li>
+                        </ul>
+                    </div>
+                    <div class="box-body p-10">
+                        <ul class="todo-list">
+                            @foreach($comments as $comment)
+                                <li class="b-1 p-0 mb-15">
+                                    <div class="position-relative p-20">
+                                        <!-- todo text -->
+                                        <span class="text-line font-size-14">{{ $comment->comment }}</span>
+                                        <!-- General tools such as edit or delete-->
+                                        <div class="pull-right text-dark flexbox">
+                                            <a href="#" data-toggle="modal" data-target="#commentModalUpdate"
+                                                data-container="body" title="" data-original-title="Edit"><i
+                                                    class="fa fa-edit"></i></a>
+
+
+                                            <!-- modal -->
+                                            <div id="commentModalUpdate" class="modal fade" tabindex="-1" role="dialog"
+                                                aria-labelledby="myModalLabel" style="display: none;"
+                                                aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="myModalLabel">Add comments
+                                                            </h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-hidden="true">×</button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form method="POST"
+                                                                action="{{ route('comments.update', $comment->id) }}">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <div class="box-body">
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label>Comments</label>
+                                                                                <input type="text" name="comment"
+                                                                                    class="form-control"
+                                                                                    placeholder="Comment goes here">
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                </div>
+                                                                <!-- /.box-body -->
+                                                                <div class="box-footer">
+                                                                    <button type="button"
+                                                                        class="btn btn-rounded btn-primary btn-outline"
+                                                                        data-dismiss="modal">
+                                                                        Cancel
+                                                                    </button>&nbsp; &nbsp;
+                                                                    <button type="submit" href="inspection.php"
+                                                                        class="btn btn-rounded btn-warning btn-outline mr-1">
+                                                                        <i class="ti-save-alt"></i> Save
+                                                                    </button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+
+                                                    </div>
+                                                    <!-- /.modal-content -->
+                                                </div>
+                                                <!-- /.modal-dialog -->
+                                            </div>
+                                            <form
+                                                action="{{ route('comments.delete', $comment->id) }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit"
+                                                    onclick="return confirm('Are you sure you want to delete this Comment?')"
+                                                    data-toggle="tooltip" data-container="body" title=""
+                                                    data-original-title="Remove"
+                                                    style="background:transparent;color: #a5b2cb;border:none;"><i
+                                                        class="fa fa-trash-o"></i></button>
+                                            </form>
+                                        </div>
+                                        <div class="mt-5 ml-50 pl-5"><em>{{ $comment->updated_at }}</em></div>
+                                    </div>
+                                </li>
+                            @endforeach
+
+                        </ul>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+
+            </div>
     </div>
+    <!-- /.row -->
+    </section>
+    <!-- /.content -->
+
+</div>
 </div>
 
 <footer class="main-footer">

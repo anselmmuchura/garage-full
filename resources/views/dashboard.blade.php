@@ -180,7 +180,7 @@
                                                         </div>
                                                     </td>
                                                     <td style="display:flex;"><a
-                                                            href="{{ route('client.profile', $client->vehicle_id) }}"
+                                                            href="{{ route('client.profile', $client->id) }}"
                                                             class="waves-effect waves-light btn btn-primary btn-circle mx-5"><span
                                                                 class="icon-Arrow-right"><span
                                                                     class="path1"></span><span

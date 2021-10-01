@@ -9,6 +9,7 @@ use App\Models\Service;
 use App\Models\Comment;
 use App\Models\Todo;
 use App\Models\Components;
+use Mail;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
@@ -81,14 +82,18 @@ class ServiceController extends Controller
             'service_id' => $createdSession->id
         ]);
 
-        Mail::send('email.vehicleAdded', function($message){
-            $message->to(Vehicle::find($data['vehicle_id'])->first()->email);
-            $message->subject('Vehicle Registration');
+        $vehicle = Vehicle::find($data['vehicle_id'])->first()->email;
+
+        //dd($vehicle);
+
+        $mailSent = Mail::send('email.vehicleAdded', ['user' => Vehicle::find($data['vehicle_id'])->first()->email], function($message) use($vehicle){
+            $message->to($vehicle);
+            $message->subject('Vehicle Service Initialization');
         });
 
         if($createdSession){
             Alert::success('Success', 'Session Added!');
-            return redirect()->back();
+            return redirect()->route('inspections.index', $createdSession->id);
         }else{
             Alert::error('Error', 'The system is unable to create Session. Try again Later!');
             return redirect()->back();

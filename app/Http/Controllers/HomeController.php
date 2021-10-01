@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $clients = Vehicle::rightJoin('services', 'vehicles.id', '=', 'services.vehicle_id')->get();
+        $clients = Vehicle::get();
         return view('dashboard', ['clients'=> $clients]);
     }
 }

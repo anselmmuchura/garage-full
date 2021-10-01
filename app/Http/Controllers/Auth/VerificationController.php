@@ -46,9 +46,10 @@ class VerificationController extends Controller
     public function verifyAccount($token)
     {
         $verifyUser = UserVerify::where('token', $token)->first();
+
+        $userId = $verifyUser->user_id;
   
         $message = 'Sorry your email cannot be identified.';
-        Alert::error('Error', 'Sorry your email cannot be identified.');
   
         if(!is_null($verifyUser) ){
             $user = $verifyUser->user;

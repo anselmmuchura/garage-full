@@ -67,7 +67,8 @@
                         <li class="user-body">
                             <a class="dropdown-item" href="#"><i class="ti-user text-muted mr-2"></i> Profile</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ route('logout') }}"><i class="ti-lock text-muted mr-2"></i> Logout</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}"><i
+                                    class="ti-lock text-muted mr-2"></i> Logout</a>
                         </li>
                     </ul>
                 </li>
@@ -177,163 +178,52 @@
                                                                 class="icon-Settings-1 font-size-18"><span
                                                                     class="path1"></span><span
                                                                     class="path2"></span></span></a>
-																	
-														<a href="{{ route('inspections.index', $session->id) }}"
+
+                                                        <a href="{{ route('inspections.index', $session->id) }}"
                                                             class="waves-effect waves-light btn btn-primary btn-circle mx-5"><span
                                                                 class="icon-Search"><span class="path1"></span><span
                                                                     class="path2"></span></span></a>
-																	
-                                                        <a href="#"
-                                                            class="waves-effect waves-light btn btn-primary-light btn-circle mx-5"
-                                                            data-toggle="modal" data-target="#editModal"><span
-                                                                class="icon-Write"><span class="path1"></span><span
-                                                                    class="path2"></span></span></a>
 
-                                                        <div id="editModal" class="modal fade" tabindex="-1"
-                                                            role="dialog" aria-labelledby="myModalLabel"
-                                                            style="display: none;" aria-hidden="true">
-                                                            <div class="modal-dialog">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h4 class="modal-title" id="myModalLabel">
-                                                                            Medium model</h4>
-                                                                        <button type="button" class="close"
-                                                                            data-dismiss="modal"
-                                                                            aria-hidden="true">×</button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <form method="POST"
-                                                                            action="{{ route('sessions.update', $session->id) }}">
-                                                                            @csrf
-                                                                            @method('put')
-                                                                            <div class="box-body">
-                                                                                <h4 class="box-title text-info"><i
-                                                                                        class="ti-user mr-15"></i>Session
-                                                                                    Info</h4>
-                                                                                <hr class="my-15">
-                                                                                <div class="row">
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label>Time Promised</label>
-                                                                                            <input class="form-control"
-                                                                                                type="date"
-                                                                                                name="timeOut"
-                                                                                                value="{{ $session->timeOut }}"
-                                                                                                required />
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label>Milleage</label>
-                                                                                            <input type="number"
-                                                                                                name="milleage"
-                                                                                                class="form-control"
-                                                                                                placeholder="Milleage"
-                                                                                                value="{{ $session->kilometers }}"
-                                                                                                required />
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">
 
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label>Fuel (%)</label>
-                                                                                            <input type="number"
-                                                                                                name="fuel" max="100"
-                                                                                                min="0"
-                                                                                                class="form-control"
-                                                                                                placeholder="Fuel"
-                                                                                                value="{{ $session->fuel }}"
-                                                                                                required />
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label>Battery</label>
-                                                                                            <input type="text"
-                                                                                                name="battery"
-                                                                                                class="form-control"
-                                                                                                placeholder="Battery"
-                                                                                                value="{{ $session->battery }}"
-                                                                                                required />
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label>Vehicle</label>
-                                                                                            <select name="vehicle_id" class="form-control select2" style="width: 100%;max-height: 50px; overflow: auto;" tabindex="-1" aria-hidden="true" @if($vehicles->count() < 1) disabled @endif>
-                                                                                                @if($vehicles->count() > 0)
-                                                                                                     @foreach($vehicles as $vehicle)
-                                                                                                          <option value="{{ $vehicle->id }}">{{ $vehicle->regNo }}</option>
-																									@endforeach
-																								@endif
-                                                                                            </select>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <!-- /.box-body -->
-                                                                            <div class="box-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-rounded btn-primary btn-outline"
-                                                                                    data-dismiss="modal">
-                                                                                    <i class="ti-save-alt"></i>
-                                                                                    Cancel
-                                                                                </button>
-                                                                                <button type="submit"
-                                                                                    class="btn btn-rounded btn-warning btn-outline mr-1">
-                                                                                    <i class="ti-save-alt"></i> Save
-                                                                                </button>
-                                                                            </div>
-                                                                        </form>
-                                                                    </div>
-
-                                                                </div>
-                                                                <!-- /.modal-content -->
-                                                            </div>
-                                                            <!-- /.modal-dialog -->
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        @else
-                                            <tr>
-                                                <td colspan="7" style="text-align: center;">No Sessions at the moment
-                                                </td>
-                                            </tr>
-                                        @endif
-
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Registration</th>
-                                            <th>Make</th>
-                                            <th>Kilometers</th>
-                                            <th>fuel</th>
-                                            <th>TimeIn</th>
-                                            <th>TimeOut</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </tfoot>
-                                </table>
                             </div>
+                            </td>
+                            </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td colspan="7" style="text-align: center;">No Sessions at the moment
+                                </td>
+                            </tr>
+                            @endif
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Registration</th>
+                                    <th>Make</th>
+                                    <th>Kilometers</th>
+                                    <th>fuel</th>
+                                    <th>TimeIn</th>
+                                    <th>TimeOut</th>
+                                    <th>Action</th>
+                                </tr>
+                            </tfoot>
+                            </table>
                         </div>
-                        <!-- /.box-body -->
                     </div>
-                    <!-- /.box -->
-
+                    <!-- /.box-body -->
                 </div>
+                <!-- /.box -->
 
-                <!-- /.col -->
             </div>
-            <!-- /.row -->
-        </section>
-        <!-- /.content -->
 
+            <!-- /.col -->
     </div>
+    <!-- /.row -->
+    </section>
+    <!-- /.content -->
+
+</div>
 </div>
 
 <footer class="main-footer">

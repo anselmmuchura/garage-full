@@ -72,7 +72,7 @@ class VehicleController extends Controller
 
         
         Alert::success('Success', 'Vehicle Added!');
-        return redirect("dashboard")->withSuccess('Success! Vehicle Added');
+        return redirect()->route("dashboard")->withSuccess('Success! Vehicle Added');
         
     }
 

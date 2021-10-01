@@ -279,18 +279,10 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Time In</label>
-                                    <input class="form-control" type="date" name="timeIn" required />
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
                                     <label>Time Promised</label>
                                     <input class="form-control" type="date" name="timeOut" required />
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Milleage</label>
@@ -298,6 +290,9 @@
                                         required />
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Fuel (%)</label>
@@ -305,8 +300,6 @@
                                         placeholder="Fuel" required />
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Battery</label>
@@ -314,6 +307,9 @@
                                         required />
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Vehicle</label>

@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel 8 User Roles and Permissions Tutorial') }}</title>
+    <title>
+        {{ config('app.name', 'Laravel 8 User Roles and Permissions Tutorial') }}
+    </title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Fonts -->
@@ -35,19 +37,20 @@
     </div>
 
     <!-- Vendor JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="{{ asset('js/vendors.min.js') }}"></script>
     <script src="{{ asset('js/pages/chat-popup.js') }}"></script>
     <script src="{{ asset('assets/icons/feather-icons/feather.min.js') }}"></script>
 
     <!-- Adnix Admin App -->
     <script src="{{ asset('js/template.js') }}"></script>
-    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('js/pages/data-table.js') }}"></script>
     <script>
         $.noConflict();
-        jQuery(document).ready(function($) {
+        jQuery(document).ready(function ($) {
             $('.table').DataTable();
         });
         // Code that uses other library's $ can follow here.
+
     </script>
 
 </body>

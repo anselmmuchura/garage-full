@@ -63,7 +63,7 @@ class ComponentsController extends Controller
 
         if($updatedComponent){
             Alert::success('Success', 'Inspection Updated!');
-            return redirect()->back();
+            return redirect()->route('session.view', $data['session_id']);
         }else{
             Alert::error('Error', 'The system is unable to Update Inspection. Try again Later!');
             return redirect()->back();
