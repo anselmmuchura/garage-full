@@ -171,6 +171,7 @@
                                                                     class="path2"></span></span></a>
 
                                                     </td>
+
                                                 </tr>
                                             @endforeach
                                         @else
