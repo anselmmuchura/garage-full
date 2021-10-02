@@ -57,7 +57,7 @@ class VehicleController extends Controller
            
         $data = $request->all();
 
-        
+        $phone = Vehicle::formatPhoneNumber($data['phone']);
         
         $createVehicle = Vehicle::create([
             'regNo' => $data['regNo'],
@@ -67,7 +67,7 @@ class VehicleController extends Controller
             'vinNo' => $data['vinNo'],
             'fullName' => $data['name'],
             'email' => $data['email'],
-            'phoneNumber' => $data['phone'],
+            'phoneNumber' => $phone,
         ]);
 
         

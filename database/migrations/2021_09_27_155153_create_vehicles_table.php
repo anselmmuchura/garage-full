@@ -23,7 +23,7 @@ class CreateVehiclesTable extends Migration
             $table->string('vinNo');
             $table->string('fullName');
             $table->string('email');
-            $table->bigInteger('phoneNumber');
+            $table->string('phoneNumber');
             $table->timestamps();
         });
     }

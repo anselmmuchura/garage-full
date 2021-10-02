@@ -231,7 +231,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Medium model</h4>
+                <h4 class="modal-title" id="myModalLabel">Add Client</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
@@ -244,13 +244,15 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Full name</label>
-                                    <input type="text" name="name" class="form-control" placeholder="First Name">
+                                    <input type="text" name="name" class="form-control" placeholder="First Name"
+                                        required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Phone number</label>
-                                    <input type="tel" name="phone" class="form-control" placeholder="Phone Number">
+                                    <input type="tel" name="phone" class="form-control" placeholder="Phone Number"
+                                        pattern="[0-9]*" required>
                                 </div>
                             </div>
                         </div>
@@ -258,7 +260,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>E-mail</label>
-                                    <input type="email" name="email" class="form-control" placeholder="E-mail">
+                                    <input type="email" name="email" class="form-control" placeholder="E-mail" required>
                                 </div>
                             </div>
 
@@ -271,31 +273,33 @@
                                 <div class="form-group">
                                     <label>Registration</label>
                                     <input type="text" name="regNo" class="form-control"
-                                        placeholder="Registration number">
+                                        placeholder="Registration number" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Make</label>
-                                    <input type="text" name="make" class="form-control" placeholder="Make">
+                                    <input type="text" name="make" class="form-control" placeholder="Make" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Model</label>
-                                    <input type="text" name="model" class="form-control" placeholder="Model">
+                                    <input type="text" name="model" class="form-control" placeholder="Model" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>VIN number</label>
-                                    <input type="text" name="vinNo" class="form-control" placeholder="VIN number">
+                                    <input type="text" name="vinNo" class="form-control" placeholder="VIN number"
+                                        required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Engine number</label>
-                                    <input type="text" name="engineNo" class="form-control" placeholder="Engine number">
+                                    <input type="text" name="engineNo" class="form-control" placeholder="Engine number"
+                                        required>
                                 </div>
                             </div>
                         </div>
