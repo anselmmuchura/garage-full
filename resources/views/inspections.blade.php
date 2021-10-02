@@ -345,15 +345,17 @@
                             <div class="box-body">
 
                                 <div class="demo-radio-button">
-                                    <input name="toolkit" type="radio" id="radio_55" class="with-gap radio-col-primary"
-                                        value="N/A" <blade
-                                        if|(%24component-%3Etoolkit%20%3D%3D%3D%20%26%2339%3BN%2FA%26%2339%3B)checked%3D%26%2334%3B%26%2334%3B%20%40endif%3E%0D>
-                                    <label for="radio_55">N/A</label>
-                                    <input name="toolkit" type="radio" id="radio_56" class="with-gap radio-col-success"
-                                        value="Good" @if($component->toolkit === 'Good')checked="" @endif>
+								<input name="toolkit" type="radio" id="radio_55" value="N/A"
+                                        class="with-gap radio-col-primary" @if($component->toolkit ===
+                                    'N/A')checked="" @endif>
+                                    <label for="radio_555">N/A</label>
+                                    <input name="toolkit" type="radio" id="radio_56" value="Good"
+                                        class="with-gap radio-col-success" @if($component->toolkit ===
+                                    'Good')checked="" @endif>
                                     <label for="radio_56">Good</label>
-                                    <input name="toolkit" type="radio" id="radio_57" class="with-gap radio-col-info"
-                                        value="Fix" @if($component->toolkit === 'Fix')checked="" @endif>
+                                    <input name="toolkit" type="radio" id="radio_57" value="Fix"
+                                        class="with-gap radio-col-info" @if($component->toolkit === 'Fix')checked=""
+                                    @endif>
                                     <label for="radio_57">Fix</label>
 
                                 </div>
@@ -368,15 +370,17 @@
                             <div class="box-body">
 
                                 <div class="demo-radio-button">
-                                    <input name="radio" type="radio" id="radio_58" class="with-gap radio-col-primary"
-                                        value="N/A" <blade
-                                        if|(%24component-%3Eradio%20%3D%3D%3D%20%26%2339%3BN%2FA%26%2339%3B)checked%3D%26%2334%3B%26%2334%3B%20%40endif%3E%0D>
+								<input name="radio" type="radio" id="radio_58" value="N/A"
+                                        class="with-gap radio-col-primary" @if($component->radio ===
+                                    'N/A')checked="" @endif>
                                     <label for="radio_58">N/A</label>
-                                    <input name="radio" type="radio" id="radio_59" class="with-gap radio-col-success"
-                                        value="Good" @if($component->radio === 'Good')checked="" @endif>
+                                    <input name="radio" type="radio" id="radio_59" value="Good"
+                                        class="with-gap radio-col-success" @if($component->radio ===
+                                    'Good')checked="" @endif>
                                     <label for="radio_59">Good</label>
-                                    <input name="radio" type="radio" id="radio_60" class="with-gap radio-col-info"
-                                        value="Fix" @if($component->radio === 'Fix')checked="" @endif>
+                                    <input name="radio" type="radio" id="radio_60" value="Fix"
+                                        class="with-gap radio-col-info" @if($component->radio === 'Fix')checked=""
+                                    @endif>
                                     <label for="radio_60">Fix</label>
 
                                 </div>

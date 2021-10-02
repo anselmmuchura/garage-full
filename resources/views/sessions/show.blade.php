@@ -160,9 +160,6 @@
                             <h4 class="box-title">Inspection</h4>
 
                             <ul class="box-controls pull-right">
-                                <li><a href="{{ route('inspections.index', $session->id) }}"
-                                        class="waves-effect waves-light btn btn-outline btn-rounded btn-warning mb-5 btn-sm">Perform
-                                        Inspection</a></li>
                                 <li><a class="box-btn-close" href="#"></a></li>
                                 <li><a class="box-btn-slide" href="#"></a></li>
                                 <li><a class="box-btn-fullscreen" href="#"></a></li>
@@ -274,8 +271,9 @@
                                                 <input type="hidden" name="completed" value="{{ $task->checked }}">
                                                 <input type="hidden" name="sessionId" value="{{ $inspection->id }}">
                                                 <input type="checkbox" id="basic_checkbox_{{ $task->id }}"
-                                                    class="filled-in" name="task" onChange="this.form.submit()" <blade
-                                                    if|(%24task-%3Echecked%20%3D%3D%3D%201)%20checked%20%40endif%3E%0D>
+                                                    class="filled-in" name="task" onChange="this.form.submit()" @if($task->checked ===
+                                                1)checked {{ $task->todo }}
+                                @endif>
                                                 <label for="basic_checkbox_{{ $task->id }}"
                                                     class="mb-0 h-15 ml-15"></label>
                                             </form>
