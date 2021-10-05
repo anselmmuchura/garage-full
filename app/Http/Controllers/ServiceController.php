@@ -9,6 +9,7 @@ use App\Models\Service;
 use App\Models\Comment;
 use App\Models\Todo;
 use App\Models\Components;
+use PDF;
 use Mail;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -149,5 +150,32 @@ class ServiceController extends Controller
             Alert::error('Error', 'The system is unable to update Task. Try again Later!');
             return redirect()->back();
         } 
+    }
+
+    public function emailReport(Int $sessionId){
+
+        $data["session"] = Service::where('id',$sessionId)->first();
+
+        $data["vehicle"] = Vehicle::where('id', $data["session"]->vehicle_id)->first();
+
+        $data["component"] = Components::where('vehicle_id', $data["vehicle"]->id)->where('service_id', $sessionId)->first();
+
+        $data["tasks"] = Todo::where('component_id', $data["component"]->id)->get();
+
+        $data["comments"] = Comment::where('component_id', $data["component"]->id)->get();
+
+
+        //dd($data);
+
+        $pdf = PDF::loadView('email.emailServiceCard', $data);
+
+        Mail::send('email.emailService', $data, function($message) use($sessionId, $data, $pdf){
+            $message->to($data['vehicle']->email)
+                    ->subject('Vehicle Inspection Report')
+                    ->attachData($pdf->output(), "Report".$sessionId."-".$data['vehicle']->regNo.".pdf");
+        });
+
+        Alert::success('Success', 'Inspection report Sent!');
+            return redirect()->route('session.view', $sessionId);
     }
 }

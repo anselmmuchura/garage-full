@@ -29,6 +29,10 @@ class Components extends Model
     {
         return $this->hasMany(Todo::class);
     }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 
     public function service()
     {

@@ -19,6 +19,9 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->middleware(['auth', 'is_verify_email'])->name('home');;
 
+Route::get('/email', function(){
+    return view('email.emailServiceCard');
+});
 Auth::routes();
 
 Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'index'])->name('login');
@@ -39,6 +42,7 @@ Route::middleware('auth')->group(function(){
     Route::post('/dashboard/addSession', [App\Http\Controllers\ServiceController::class, 'store'])->name('sessions.store');
     Route::get('/dashboard/session/{id}', [App\Http\Controllers\ServiceController::class, 'view'])->name('session.view');
     Route::put('/dashboard/updateSession/{id}', [App\Http\Controllers\ServiceController::class, 'update'])->name('sessions.update');
+    Route::get('/dashboard/session/{id}/email', [App\Http\Controllers\ServiceController::class, 'emailReport'])->name('session.sendMail');
 
     Route::post('/dashboard/addTask/{id}', [App\Http\Controllers\TodoController::class, 'store'])->name('tasks.store');
     Route::put('/dashboard/updateTask/{id}', [App\Http\Controllers\TodoController::class, 'update'])->name('tasks.update');

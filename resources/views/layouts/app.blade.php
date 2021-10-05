@@ -31,7 +31,6 @@
     @include('sweetalert::alert')
     <div id="app">
         <div class="wrapper">
-            @yield('header-content')
             @yield('content')
         </div>
     </div>

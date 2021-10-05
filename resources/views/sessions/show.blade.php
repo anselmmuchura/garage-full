@@ -113,8 +113,17 @@
                         </nav>
                     </div>
                 </div>
-
+                @if(!$tasks->isEmpty() && !$comments->isEmpty())
+                <div class="send-btn">
+    			  <div class="clearFix">
+    				<div class="text-right pb-15">
+    					<a id="email2" class="btn btn-warning" href="{{ route('session.sendMail', $session->id) }}"> <span><i class="fa fa-print"></i>Email Report</span> </a>
+    				</div>
+    			  </div>
+    			</div>
+                @endif
             </div>
+            
         </div>
 
         <!-- Main content -->
