@@ -41,6 +41,10 @@
             border-collapse: collapse !important;
         }
 
+        table.fixed{
+            table-layout: fixed;
+        }
+
         body {
             height: 100% !important;
             margin: 0 !important;
@@ -112,6 +116,9 @@ hr {
 .table-bordered td, .table-bordered th {
     border: 1px solid #dee2e6;
 }
+td{
+  font-size:13px;
+}
 @media print {
     .page {
         clear: both;
@@ -155,32 +162,33 @@ hr {
                                 <!-- /.col -->
                                 </div>
                                 <div class="row invoice-info">
-                                    <div class="col-6 invoice-col">
-                                        <strong>Vehicle: </strong> <span class="text-blue font-size-24">{{ $vehicle->make }} {{ $vehicle->model }}</span><br>
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-6 invoice-col text-right">
-                                        <strong>Reg: </strong>
-                                        <span class="text-blue font-size-24">{{ $vehicle->regNo }}</span><br><br>
-
-                                        </address>
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-12 invoice-col mb-15">
-                                        <div class="invoice-details row no-margin">
-                                        <div class="col-md-6 col-lg-3 col-3"><b>Engine number: </b>{{ $vehicle->engineNo }}</div>
-                                        <div class="col-md-6 col-lg-3 col-3"><b>VIN:</b> {{ $vehicle->vinNo }}</div>
-                                        <div class="col-md-6 col-lg-3 col-3"><b>Mileage: </b>{{ $session->kilometers }} Km</div>
-                                        <div class="col-md-6 col-lg-3 col-3"><b>Fuel: </b>{{ $session->fuel }} %</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 invoice-col mb-15">
-                                        <div class="invoice-details row no-margin">
-                                        <div class="col-md-6 col-lg-3 col-3"><b>Client name:</b>{{ $vehicle->fullName }}</div>
-                                        <div class="col-md-6 col-lg-3 col-3"><b>Time in: </b>{{ $session->created_at }}</div>
-                                        <div class="col-md-6 col-lg-3 col-3"><b>Time promised: </b>{{$session->timeOut}}</div>
-                                        </div>
-                                    </div><!-- /.col -->
+                                    <table class="fixed" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                     <tr>
+                                        <td bgcolor="#ffffff" align="left"  style="width:33%;padding:0; color: #666666;">
+                                            <strong>Vehicle: </strong> <span class="text-blue font-size-24">{{ $vehicle->make }} {{ $vehicle->model }}</span><br>
+                                        </td>
+                                        <td bgcolor="#ffffff" align="left"  style="width:33%;padding:0; color: #666666;">
+                                            <strong>Reg: </strong>
+                                            <span class="text-blue font-size-24">{{ $vehicle->regNo }}</span>
+                                        </td>
+                                        <td bgcolor="#ffffff" align="left"  style="width:33%;padding:0; color: #666666;">
+                                            <b>Engine No: </b>
+                                            <span class="text-blue font-size-24">{{ $vehicle->engineNo }}</span>
+                                        </td>
+                                      <tr>
+                                    </table>
+                                    <table class="fixed" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                      <tr>
+                                        <td bgcolor="#ffffff" align="left"  style="width:33%;padding:0; color: #666666;"><b>VIN:</b> {{ $vehicle->vinNo }}</td>
+                                        <td bgcolor="#ffffff" align="left"  style="width:33%;padding:0; color: #666666;"><b>Mileage: </b>{{ $session->kilometers }} Km</td>
+                                        <td bgcolor="#ffffff" align="left"  style="width:33%;padding:0; color: #666666;"><b>Fuel: </b>{{ $session->fuel }} %</td>
+                                      </tr>
+                                    </table>
+                                    <table class="fixed" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <td bgcolor="#ffffff" align="left"  style="width:33%;padding:0; color: #666666;"><b>Client: </b>{{ $vehicle->fullName }}</td>
+                                        <td bgcolor="#ffffff" align="left"  style="width:33%;padding:0; color: #666666;"><b>Time in: </b>{{ $session->created_at }}</td>
+                                        <td bgcolor="#ffffff" align="left"  style="width:33%;padding:0; color: #666666;"><b>Time promised: </b>{{$session->timeOut}}</td>
+                                    </table>
                                 </div>
                                 <div class="row">
                                     <div class="page-header" style="margin: 10px 0 20px 10px;">
