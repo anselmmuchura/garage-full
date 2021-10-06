@@ -12,7 +12,8 @@ class Comment extends Model
     protected $fillable = [
         'comment',
         'checked',
-        'component_id'
+        'component_id',
+        'service_id'
     ];
 
     public function component()

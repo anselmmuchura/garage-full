@@ -12,7 +12,8 @@ class Todo extends Model
     protected $fillable = [
         'todo',
         'checked',
-        'component_id'
+        'component_id',
+        'service_id'
     ];
 
     public function component()

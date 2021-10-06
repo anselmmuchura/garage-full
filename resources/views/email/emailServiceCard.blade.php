@@ -1,97 +1,76 @@
-
-<html lang="{{ app()->getLocale() }}">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>
-        ss
-    </title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" >
-<style media="screen">
-  .row {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
-}
-.text-right {
-    text-align: right!important;
-}
-.col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
-    position: relative;
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-}
-.col-6 {
-    -ms-flex: 0 0 50%;
-    flex: 0 0 50%;
-    max-width: 50%;
-}
-.col-12 {
-    -ms-flex: 0 0 100%;
-    flex: 0 0 100%;
-    max-width: 100%;
-}
-@media (min-width: 768px){
-  .col-md-6 {
-    -ms-flex: 0 0 50%;
-    flex: 0 0 50%;
-    max-width: 50%;
-}
-}
-.col-3 {
-    -ms-flex: 0 0 25%;
-    flex: 0 0 25%;
-    max-width: 25%;
-}
-.mb-15 {
-    margin-bottom: 10px;
-}
-.clearfix::after {
-    display: block;
-    clear: both;
-    content: "";
-}
-.d-inline {
-    display: inline!important;
-}
-.h2 {
-    font-size: 2rem;
-}
-.h3 {
-    font-size: 1.75rem;
-}
-.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-    margin-bottom: .5rem;
-    font-weight: 500;
-    line-height: 1.2;
-}
-.table-responsive>.table-bordered {
-    border: 0;
-}
-.table {
-    width: 100%;
-    margin-bottom: 1rem;
-    color: #212529;
-}
-table {
-    border-collapse: collapse;
-}
-.table-bordered td, .table-bordered th {
-    border: 1px solid #dee2e6;
-}
-.table td, .table th {
-    padding: .75rem;
-    vertical-align: top;
-}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <style type="text/css">
+        /* FONTS */
+        @import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
 
+        /* CLIENT-SPECIFIC STYLES */
+        body,
+        table,
+        td,
+        a {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
 
-  .page-header {
+        table,
+        td {
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+
+        img {
+            -ms-interpolation-mode: bicubic;
+        }
+
+        /* RESET STYLES */
+        img {
+            border: 0;
+            height: auto;
+            line-height: 100%;
+            outline: none;
+            text-decoration: none;
+        }
+
+        table {
+            border-collapse: collapse !important;
+        }
+
+        body {
+            height: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+        }
+
+        /* iOS BLUE LINKS */
+        a[x-apple-data-detectors] {
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+
+        /* MOBILE STYLES */
+        @media screen and (max-width:600px) {
+            h1 {
+                font-size: 32px !important;
+                line-height: 32px !important;
+            }
+        }
+
+        /* ANDROID CENTER FIX */
+        div[style*="margin: 16px 0;"] {
+            margin: 0 !important;
+        }
+        .page-header {
     margin: 10px 0 20px;
     padding-bottom: 9px;
     border-bottom: 1px solid #e6e6e6;
@@ -101,7 +80,7 @@ table {
     position: relative;
     background: #ffffff;
     border: 1px solid #d5dfea;
-    padding: 20px;
+    padding: 20px ;
     margin: 10px 10px;
 }
 
@@ -109,8 +88,7 @@ table {
     background-color: #fff;
     margin-bottom: 15px;
     border: 1px solid #cccccc;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding: 15px 20px;
 }
 
 .mb-15{
@@ -123,140 +101,280 @@ hr {
     border: 0;
     border-top: 1px solid rgba(0,0,0,.1);
 }
-</style>
-
+.table-bordered {
+    border: 1px solid #dee2e6;
+}
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+}
+.table-bordered td, .table-bordered th {
+    border: 1px solid #dee2e6;
+}
+@media print {
+    .page {
+        clear: both;
+        page-break-before: always;
+    }
+}
+    </style>
 </head>
 
-<body class="hold-transition dark-skin sidebar-mini theme-primary sidebar-collapse">
-    <div id="app">
-    <section class="invoice printableArea" style="padding:30px">
-      <div class="row">
-      <div class="col-12">
-        <div class="bb-1 clearFix">
-        </div>
-      </div>
-      <div class="col-12">
-        <div class="page-header">
-        <h2 class="d-inline"><span class="font-size-30">Star Autocare </span></h2>
-        <div class="pull-right text-right">
-          <h3>Service card</h3>
-        </div>
-        </div>
-      </div>
-      <!-- /.col -->
-      </div>
-      <div class="row invoice-info">
-      <div class="col-6 invoice-col">
-        <strong>Vehicle: </strong>
-        <address>
-           <strong class="text-blue font-size-24">Mercedes 560SEL</strong><br>
-         </address>
-      </div>
-      <!-- /.col -->
-      <div class="col-6 invoice-col text-right">
-        <strong>Reg: </strong>
-        <address>
-        <strong class="text-blue font-size-24">KAG 333V</strong><br><br>
+<body style="background-color: #f3f5f7; margin: 0 !important; padding: 0 !important;">
 
-        </address>
-      </div>
-      <!-- /.col -->
-      <div class="col-12 invoice-col mb-15">
-        <div class="invoice-details row no-margin">
-          <div class="col-md-6 col-lg-3 col-3"><b>Engine number: </b>117</div>
-          <div class="col-md-6 col-lg-3 col-3"><b>VIN:</b> FC12548</div>
-          <div class="col-md-6 col-lg-3 col-3"><b>Mileage: </b>12000KM</div>
-          <div class="col-md-6 col-lg-3 col-3"><b>Fuel: </b>20%</div>
-        </div>
-      </div>
-      <div class="col-12 invoice-col mb-15">
-        <div class="invoice-details row no-margin">
-          <div class="col-md-6 col-lg-3 col-3"><b>Client name:</b>Charles</div>
-          <div class="col-md-6 col-lg-3 col-3"><b>Time in: </b>12/14/2021 9:45pm</div>
-          <div class="col-md-6 col-lg-3 col-3"><b>Time promised: </b>12/14/2021 9:55pm</div>
-        </div>
-      </div><!-- /.col -->
-      </div>
-      <div class="row">
-          <div class="page-header" style="margin: 10px 0 20px 10px;">
-             <h6 class="d-inline"><span class="font-size-15">Tasks</span></h6>
-          </div>
-        <div class="col-12 table-responsive mb-15">
-            <table class="table table-bordered">
-            <tbody>
-            <tr>
-              <th>#</th>
-              <th>Tasks</th>
-              <th class="text-right">Status</th>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Do a paint job</td>
-              <td class="text-right"><i>Done</i></td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Change disk brakes</td>
-              <td class="text-right"><i>Pending</i></td>
-            </tr>
 
-            </tbody>
+    <table class="page" border="0" cellpadding="0" cellspacing="0" width="100%" style="page-break-after: always;">
+        <!-- LOGO -->
+        <tr>
+            <td align="center">
+                <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+            <tr>
+            <td align="center" valign="top" width="600">
+            <![endif]-->
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 700px;">
+                    <tr>
+                        <td align="center" valign="top" style="padding: 40px 10px 10px 10px;">
+                            <a href="#" target="_blank" style="text-decoration: none;">
+                                <span
+                                    style="display: block; font-family: 'Poppins', sans-serif; color: #3e8ef7; font-size: 36px;"
+                                    border="0"><b style="color:#ff4c52">Star</b> Auto</span>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
             </table>
-      </div>
+            <![endif]-->
+            </td>
+        </tr>
+        <!-- COPY BLOCK -->
+        <tr>
+            <td align="center" style="padding: 0px 10px 0px 10px;">
+                <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+            <tr>
+            <td align="center" valign="top" width="600">
+            <![endif]-->
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
+                    <!-- COPY -->
+                    <tr>
+                        <td bgcolor="#ffffff" align="left"
+                            style="padding:0; color: #666666; font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 400; line-height: 25px;">
+                            <section class="invoice printableArea" style="padding:30px">
+                            <div class="pull-right text-right">
+                              <h2>Service card</h2>
+                              <hr>
+                            </div>
+ 
+    		  <div class="row invoice-info">
+              <div class="col-12 invoice-col">
+                <strong>Vehicle: </strong> <span class="text-blue font-size-24">{{ $vehicle->make }} {{ $vehicle->model }}</span><br>
+              </div>
+              <!-- /.col -->
+              <div class="col-12 invoice-col text-right">
+                <strong>Reg: </strong>
+                <span class="text-blue font-size-24">{{ $vehicle->regNo }}</span><br><br>
 
-      <div class="col-6 table-responsive mb-15">
-        <div class="page-header" style="margin: 10px 0 20px 10px;">
-              <h6 class="d-inline"><span class="font-size-15">Inspection</span></h6>
-        </div>
-        <table class="table table-bordered">
-        <tbody>
-        <tr>
-          <th>#</th>
-          <th>Inspected item</th>
-          <th class="text-right">Condition</th>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Rear view mirror</td>
-          <td class="text-right">N/I</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Windshield</td>
-          <td class="text-right">Needs fixing</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Air conditioning operation</td>
-          <td class="text-right">Good</td>
-        </tr>
+                </address>
+              </div>
+              <!-- /.col -->
+              <div class="col-12 invoice-col mb-15">
+                <div class="invoice-details row no-margin">
+                  <div class="col-md-6 col-lg-3 col-3"><b>Engine number: </b>{{ $vehicle->engNo }}</div>
+                  <div class="col-md-6 col-lg-3 col-3"><b>VIN:</b> {{ $vehicle->vinNo }}</div>
+                  <div class="col-md-6 col-lg-3 col-3"><b>Mileage: </b>{{ $session->kilometers }}</div>
+                  <div class="col-md-6 col-lg-3 col-3"><b>Fuel: </b>{{ $session->fuel }} %</div>
+                </div>
+              </div>
+              <div class="col-12 invoice-col mb-15">
+                <div class="invoice-details row no-margin">
+                  <div class="col-md-6 col-lg-3 col-3"><b>Client name:</b>{{ $vehicle->fullName }}</div>
+                  <div class="col-md-6 col-lg-3 col-3"><b>Time in: </b>{{ $session->created_at }}</div>
+                  <div class="col-md-6 col-lg-3 col-3"><b>Time promised: </b>{{$session->timeOut}}</div>
+                </div>
+              </div><!-- /.col -->
+              </div>
+              <div class="row">
+                  <div class="page-header" style="margin: 10px 0 20px 10px;">
+                    <h4 class="d-inline" style="margin-bottom:0;"><span class="font-size-15">Tasks</span></h4>
+                  </div>
+                <div class="col-12 table-responsive">
+                <table class="table table-bordered">
+                <tbody>
+                <tr>
+                  
+                </tr>
+                @foreach($tasks as $task)
+                  <th>{{ $task->todo }}}</th>
+                  <th class="text-right">@if($task->checked === true)Done @else Pending @endif</th>
+                @endforeach
+                </tbody>
+                </table>
+              </div>
 
-        </tbody>
+    	    </div>
+
+
+    		</section>
+                        </td>
+                    </tr>
+                    
+                </table>
+                <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+            </td>
+        </tr>
+        <!-- FOOTER -->
+        <tr>
+            <td align="center" style="padding: 10px 10px 50px 10px;">
+                <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+            <tr>
+            <td align="center" valign="top" width="600">
+            <![endif]-->
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
+                    <!-- COPYRIGHT -->
+                    <tr>
+                        <td align="center"
+                            style="padding: 30px 30px 30px 30px; color: #333333; font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 400; line-height: 18px;">
+                            <p style="margin: 0;">Copyright © 2021. All rights reserved.</p>
+                        </td>
+                    </tr>
+                </table>
+                <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+            </td>
+        </tr>
+    </table>
+
+
+    <table class="page" border="0" cellpadding="0" cellspacing="0" width="100%">
+        <!-- LOGO -->
+        <tr>
+            <td align="center">
+                <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+            <tr>
+            <td align="center" valign="top" width="600">
+            <![endif]-->
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 700px;">
+                    <tr>
+                        <td align="center" valign="top" style="padding: 40px 10px 10px 10px;">
+                            <a href="#" target="_blank" style="text-decoration: none;">
+                                <span
+                                    style="display: block; font-family: 'Poppins', sans-serif; color: #3e8ef7; font-size: 36px;"
+                                    border="0"><b style="color:#ff4c52">Star</b> Auto</span>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+            </td>
+        </tr>
+        <!-- COPY BLOCK -->
+        <tr>
+            <td align="center" style="padding: 0px 10px 0px 10px;">
+                <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+            <tr>
+            <td align="center" valign="top" width="600">
+            <![endif]-->
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 700px;">
+                    <!-- COPY -->
+                    <tr>
+                        <td bgcolor="#ffffff" align="left"
+                            style="padding:0; color: #666666; font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 400; line-height: 25px;">
+                            <section class="invoice printableArea" style="padding:30px">
+ 
+                                <div class="row invoice-info">
+                                      <div class="col-6 table-responsive">
+                                        <div class="page-header" style="margin: 10px 0 20px 10px;">
+                                              <h4 class="d-inline" style="margin-bottom:0;"><span class="font-size-15">Inspection</span></h4>
+                                        </div>
+                                        <table class="table table-bordered">
+                                        <tbody>
+                                          @foreach($tasks as $task)
+                                            <th>{{ $task->todo }}}</th>
+                                            <th class="text-right">@if($task->checked === true)Done @else Pending @endif</th>
+                                          @endforeach
+                                        </tbody>
+                                        </table>
+                                      </div>
+
+                                      <div class="col-6 text-left">
+                                        <div class="page-header" style="margin: 10px 0 20px 10px;">
+                                              <h4 class="d-inline" style="margin-bottom:0;"><span class="font-size-15">Comments</span></h4>
+                                        </div>
+
+                                        <div>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+                                            molestiae quas vel sint</p><hr>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+                                            molestiae quas vel sint</p><hr>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+                                            molestiae quas vel sint</p><hr>
+                                        </div>
+
+
+                                      </div><!-- /.col -->
+                                </div>
+
+
+                            </section>
+                </td>
+            </tr>
+            
         </table>
-      </div>
+        <!--[if (gte mso 9)|(IE)]>
+    </td>
+    </tr>
+    </table>
+    <![endif]-->
+    </td>
+</tr>
+<!-- FOOTER -->
+<tr>
+    <td align="center" style="padding: 10px 10px 50px 10px;">
+        <!--[if (gte mso 9)|(IE)]>
+    <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+    <tr>
+    <td align="center" valign="top" width="600">
+    <![endif]-->
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 700px;">
 
-    <div class="col-6 text-left">
-        <div class="page-header" style="margin: 10px 0 20px 10px;">
-              <h6 class="d-inline"><span class="font-size-15">Comments</span></h6>
-        </div>
-
-        <div style="border: 1px solid #cccccc;padding: 10px;">
-            <i>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-            molestiae quas vel sint</i><hr>
-            <i>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-            molestiae quas vel sint</i><hr>
-            <i>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-            molestiae quas vel sint</i><hr>
-        </div>
-
-
-      </div><!-- /.col -->
-      </div>
-
-
-    </section>
-    </div>
+            <!-- COPYRIGHT -->
+            <tr>
+                <td align="center"
+                    style="padding: 30px 30px 30px 30px; color: #333333; font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 400; line-height: 18px;">
+                    <p style="margin: 0;">Copyright © 2021. All rights reserved.</p>
+                </td>
+            </tr>
+        </table>
+        <!--[if (gte mso 9)|(IE)]>
+    </td>
+    </tr>
+    </table>
+    <![endif]-->
+    </td>
+</tr>
+</table>
 
 </body>
+
+<!-- Mirrored from adnix-admin-template.multipurposethemes.com/main-dark-mini-sidebar/email_welcome.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 22 Sep 2021 15:36:22 GMT -->
 
 </html>

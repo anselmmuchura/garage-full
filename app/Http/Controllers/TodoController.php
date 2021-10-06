@@ -49,6 +49,7 @@ class TodoController extends Controller
         
         $createdTask = Todo::create([
             'todo' => $data['todo'],
+            'service_id' => $data['sessionId'],
             'component_id' => $component_id,
         ]);
 

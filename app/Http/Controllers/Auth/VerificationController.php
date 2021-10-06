@@ -55,7 +55,7 @@ class VerificationController extends Controller
             if(!$user->is_email_verified) {
                 $verifyUser->user->is_email_verified = 1;
                 $verifyUser->user->save();
-                Mail::send('email.emailVerified', ['token' => $token], function($message){
+                Mail::send('email.emailVerified', ['token' => $token], function($message) use($user){
                     $message->to($user->email);
                     $message->subject('Email Verification Mail');
                 });

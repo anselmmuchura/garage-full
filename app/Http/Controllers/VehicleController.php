@@ -84,11 +84,23 @@ class VehicleController extends Controller
      */
     public function view(Int $id)
     {
-        $client = Vehicle::find($id)->first();
+        $client = Vehicle::where("id",$id)->first();
 
-        $sessions = $client->services;
         
-        return view('clients.view', ['client'=> $client, 'sessions' => $sessions]);
+
+        if($client->has('services')->where('id',$id)->get()->isEmpty()){
+            Alert::warning('Warning', 'Add Session for the Client first!');
+            return redirect()->route('sessions.index');
+
+        }else{
+ 
+            $sessions = $client->services;
+            return view('clients.view', ['client'=> $client, 'sessions' => $sessions]);
+        }
+
+        
+        
+       
     }
 
     // /**

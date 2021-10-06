@@ -23,6 +23,16 @@ class Service extends Model
         return $this->hasOne(Component::class);
     }
 
+    public function task()
+    {
+        return $this->hasMany(Todo::class);
+    }
+
+    public function comment()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public function vehicle()
     {
         return $this->belongsTo(Vehicle::class);

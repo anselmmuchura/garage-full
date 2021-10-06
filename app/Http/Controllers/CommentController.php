@@ -33,6 +33,7 @@ class CommentController extends Controller
         
         $createdComment = Comment::create([
             'comment' => $data['comment'],
+            'service_id' => $data['sessionId'],
             'component_id' => $component_id,
         ]);
 
