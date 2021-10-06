@@ -164,9 +164,9 @@ class ServiceController extends Controller
 
         $data["comments"] = Comment::where('component_id', $data["component"]->id)->get();
 
-        //dd($data);
-
         $pdf = PDF::loadView('email.emailServiceCard', $data);
+
+        //dd($data["component"]);
 
         Mail::send('email.emailService', $data, function($message) use($sessionId, $data, $pdf){
             $message->to($data['vehicle']->email)

@@ -184,9 +184,9 @@ hr {
               <!-- /.col -->
               <div class="col-12 invoice-col mb-15">
                 <div class="invoice-details row no-margin">
-                  <div class="col-md-6 col-lg-3 col-3"><b>Engine number: </b>{{ $vehicle->engNo }}</div>
+                  <div class="col-md-6 col-lg-3 col-3"><b>Engine number: </b>{{ $vehicle->engineNo }}</div>
                   <div class="col-md-6 col-lg-3 col-3"><b>VIN:</b> {{ $vehicle->vinNo }}</div>
-                  <div class="col-md-6 col-lg-3 col-3"><b>Mileage: </b>{{ $session->kilometers }}</div>
+                  <div class="col-md-6 col-lg-3 col-3"><b>Mileage: </b>{{ $session->kilometers }} Km</div>
                   <div class="col-md-6 col-lg-3 col-3"><b>Fuel: </b>{{ $session->fuel }} %</div>
                 </div>
               </div>
@@ -206,12 +206,17 @@ hr {
                 <table class="table table-bordered">
                 <tbody>
                 <tr>
-                  
+                  <th>No</th>
+                  <th>Task</th>
+                  <th class="text-right">Status</th>
                 </tr>
+                <tr>
                 @foreach($tasks as $task)
-                  <th>{{ $task->todo }}}</th>
-                  <th class="text-right">@if($task->checked === true)Done @else Pending @endif</th>
+                  <td>{{ $task->id }}</td>
+                  <td>{{ $task->todo }}</td>
+                  <td class="text-right">@if($task->checked === true) Done @else Pending @endif</td>
                 @endforeach
+                </tr>
                 </tbody>
                 </table>
               </div>
@@ -307,10 +312,10 @@ hr {
                                         </div>
                                         <table class="table table-bordered">
                                         <tbody>
-                                          @foreach($tasks as $task)
-                                            <th>{{ $task->todo }}}</th>
-                                            <th class="text-right">@if($task->checked === true)Done @else Pending @endif</th>
-                                          @endforeach
+                                            <th><td>rear_view_mirror</td></th>
+                                            <tr><td>{{ $component->rear_view_mirror }}<td></tr>
+                                            <th><td>rear_view_mirror</td></th>
+                                            <tr><td>{{ $component->rear_view_mirror }}<td></tr>
                                         </tbody>
                                         </table>
                                       </div>
@@ -320,13 +325,17 @@ hr {
                                               <h4 class="d-inline" style="margin-bottom:0;"><span class="font-size-15">Comments</span></h4>
                                         </div>
 
-                                        <div>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                                            molestiae quas vel sint</p><hr>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                                            molestiae quas vel sint</p><hr>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                                            molestiae quas vel sint</p><hr>
+                                        <div style="width:100%;    overflow-wrap: normal;">
+                                        <table class="table table-bordered">
+                                          <tbody>
+                                          
+                                           <tr>
+                                              @foreach($comments as $comment)
+                                              <td>{{ $comment->comment }}</td>
+                                              @endforeach
+                                            </tr>
+                                            </tbody>
+                                        </table>
                                         </div>
 
 
