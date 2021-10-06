@@ -155,11 +155,11 @@ hr {
                                 <!-- /.col -->
                                 </div>
                                 <div class="row invoice-info">
-                                    <div class="col-6 invoice-col">
+                                    <div class="col-12 invoice-col">
                                         <strong>Vehicle: </strong> <span class="text-blue font-size-24">{{ $vehicle->make }} {{ $vehicle->model }}</span><br>
                                     </div>
                                     <!-- /.col -->
-                                    <div class="col-6 invoice-col text-right">
+                                    <div class="col-12 invoice-col text-right">
                                         <strong>Reg: </strong>
                                         <span class="text-blue font-size-24">{{ $vehicle->regNo }}</span><br><br>
 

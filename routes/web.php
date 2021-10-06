@@ -20,7 +20,7 @@ use App\Http\Controllers\UserController;
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->middleware(['auth', 'is_verify_email'])->name('home');;
 
 Route::get('/email', function(){
-    return view('email.emailServiceCard');
+    return view('email.test');
 });
 Auth::routes();
 
