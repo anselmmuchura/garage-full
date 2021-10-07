@@ -75,9 +75,7 @@
             margin: 0 !important;
         }
         .page-header {
-    margin: 10px 0 20px;
     padding-bottom: 9px;
-    border-bottom: 1px solid #e6e6e6;
 }
 
 .invoice {
@@ -191,16 +189,16 @@ td{
                                     </table>
                                 </div>
                                 <div class="row">
-                                    <div class="page-header" style="margin: 10px 0 20px 10px;">
+                                    <div class="page-header">
                                         <h4 class="d-inline" style="margin-bottom:0;"><span class="font-size-15">Tasks</span></h4>
                                     </div>
                                     <div class="col-12 table-responsive mb-15">
                                     <table class="table table-bordered">
                                     <tbody>
                                     <tr>
-                                    <th>No</th>
-                                    <th>Task</th>
-                                    <th class="text-right">Status</th>
+                                    <th align="left">No</th>
+                                    <th align="left">Task</th>
+                                    <th align="left">Status</th>
                                     </tr>
                                     <tr>
                                     @foreach($tasks as $task)
@@ -214,36 +212,40 @@ td{
                                 </div>
 
                                 <div class="col-6 table-responsive">
-                                    <div class="page-header" style="margin: 10px 0 20px 10px;">
+                                    <div class="page-header">
                                             <h4 class="d-inline" style="margin-bottom:0;"><span class="font-size-15">Inspection</span></h4>
                                     </div>
                                     <table class="table table-bordered">
                                     <tbody>
-                                        <tr><td>Rear view mirror</td><td>{{ $component->rear_view_mirror }}<td></tr>
-                                        <tr><td>Windshield</td><td>{{ $component->windshield }}<td></tr>
-                                        <tr><td>Air conditioning operation</td><td>{{ $component->air_conditioning_operation }}<td></tr>
-                                        <tr><td>Dashboard instrumentation</td><td>{{ $component->dash_board_instrumentation }}<td></tr>
-                                        <tr><td>Internal Lighting</td><td>{{ $component->internal_lighting }}<td></tr>
-                                        <tr><td>Floor Carpeting</td><td>{{ $component->floor_carpeting }}<td></tr>
-                                        <tr><td>Tyre Condition</td><td>{{ $component->tyre_condition }}<td></tr>
-                                        <tr><td>Spear Wheel</td><td>{{ $component->spear_wheel }}<td></tr>
-                                        <tr><td>Toolkit</td><td>{{ $component->toolkit }}<td></tr>
-                                        <tr><td>Radio</td><td>{{ $component->radio }}<td></tr>
+                                        <tr>
+                                        <th align="left">Component</th>
+                                        <th align="left">Status</th>
+                                        </tr>
+                                        <tr><td>Rear view mirror</td><td>{{ $component->rear_view_mirror }}</td></tr>
+                                        <tr><td>Windshield</td><td>{{ $component->windshield }}</td></tr>
+                                        <tr><td>Air conditioning operation</td><td>{{ $component->air_conditioning_operation }}</td></tr>
+                                        <tr><td>Dashboard instrumentation</td><td>{{ $component->dash_board_instrumentation }}</td></tr>
+                                        <tr><td>Internal Lighting</td><td>{{ $component->internal_lighting }}</td></tr>
+                                        <tr><td>Floor Carpeting</td><td>{{ $component->floor_carpeting }}</td></tr>
+                                        <tr><td>Tyre Condition</td><td>{{ $component->tyre_condition }}</td></tr>
+                                        <tr><td>Spear Wheel</td><td>{{ $component->spear_wheel }}</td></tr>
+                                        <tr><td>Toolkit</td><td>{{ $component->toolkit }}</td></tr>
+                                        <tr><td>Radio</td><td>{{ $component->radio }}</td></tr>
                                     </tbody>
                                     </table>
                                 </div>
 
                                 <div class="col-6 text-left">
-                                        <div class="page-header" style="margin: 10px 0 20px 10px;">
+                                        <div class="page-header">
                                               <h4 class="d-inline" style="margin-bottom:0;"><span class="font-size-15">Comments</span></h4>
                                         </div>
 
                                         <div style="width:100%;    overflow-wrap: normal;">
-                                            <table class="table table-bordered">
+                                            <table class="table" border="0">
                                             <tbody>
                                                 @foreach($comments as $comment)
                                                     <tr>
-                                                        <td>{{ $comment->comment }}</td>
+                                                        <td>{{ $comment->id }}. {{ $comment->comment }}</td>
                                                     </tr>
                                                 @endforeach
                                                 </tbody>

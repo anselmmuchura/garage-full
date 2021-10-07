@@ -171,7 +171,7 @@ class ServiceController extends Controller
         Mail::send('email.emailService', $data, function($message) use($sessionId, $data, $pdf){
             $message->to($data['vehicle']->email)
                     ->subject('Vehicle Inspection Report')
-                    ->attachData($pdf->output(), "Report".$sessionId."-".$data['vehicle']->regNo.".pdf");
+                    ->attachData($pdf->output(), "Report-".$sessionId."-".$data['vehicle']->regNo.".pdf");
         });
 
         Alert::success('Success', 'Inspection report Sent!');
