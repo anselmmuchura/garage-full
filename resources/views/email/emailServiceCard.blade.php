@@ -286,7 +286,7 @@
 
                           @foreach($comments as $key=>$comment)
 
-                          @endforeach
+                          
                           <table class="table" border="0">
                             <tbody>
                               <tr>
@@ -294,6 +294,26 @@
                               </tr>
                             </tbody>
                           </table>
+                          @endforeach
+                        </div>
+                      </div>
+
+                      <div class="col-6 text-left">
+                        <div class="page-header">
+                          <h4 class="d-inline" style="margin-bottom:0;"><span class="font-size-15">Incars</span></h4>
+                        </div>
+
+                        <div style="width:100%;    overflow-wrap: normal;">
+
+                          @foreach($incars as $key=>$incar)
+                          <table class="table" border="0">
+                            <tbody>
+                              <tr>
+                                <td>{{ $key+1 }}. {{ $incar->incar }}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          @endforeach
                         </div>
                       </div>
 

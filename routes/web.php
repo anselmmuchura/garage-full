@@ -58,6 +58,10 @@ Route::middleware('auth')->group(function(){
     Route::put('/dashboard/updateComment/{id}', [App\Http\Controllers\CommentController::class, 'update'])->name('comments.update');
     Route::delete('/dashboard/deleteComment/{id}', [App\Http\Controllers\CommentController::class, 'destroy'])->name('comments.delete');
 
+    Route::post('/dashboard/addIncar/{id}', [App\Http\Controllers\IncarController::class, 'store'])->name('incars.store');
+    Route::put('/dashboard/updateIncar/{id}', [App\Http\Controllers\IncarController::class, 'update'])->name('incars.update');
+    Route::delete('/dashboard/deleteIncar/{id}', [App\Http\Controllers\IncarController::class, 'destroy'])->name('incars.delete');
+
     Route::get('/dashboard/session/{id}/inspection', [App\Http\Controllers\InspectionController::class, 'index'])->name('inspections.index');
     Route::put('/dashboard/updateComponents/{id}', [App\Http\Controllers\ComponentsController::class, 'update'])->name('components.update');
 });

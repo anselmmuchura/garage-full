@@ -10,6 +10,7 @@ use App\Models\Comment;
 use App\Models\Todo;
 use App\Models\TaskStatus;
 use App\Models\Components;
+use App\Models\Incar;
 use PDF;
 use Mail;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -118,7 +119,9 @@ class ServiceController extends Controller
 
         $comments = Comment::where('component_id', $component->id)->get();
 
-        return view('sessions.show', ['session'=> $session, 'vehicle' => $vehicle, 'inspection' => $component, 'tasks' => $tasks, 'statuses' => $statuses,'comments' => $comments]);
+        $incars = Incar::where('component_id', $component->id)->get();
+
+        return view('sessions.show', ['session'=> $session, 'vehicle' => $vehicle, 'inspection' => $component, 'tasks' => $tasks, 'statuses' => $statuses,'comments' => $comments, 'incars' => $incars]);
     }
 
     public function update(Request $request, Int $id)
@@ -166,6 +169,8 @@ class ServiceController extends Controller
         $data["tasks"] = Todo::where('component_id', $data["component"]->id)->get();
 
         $data["comments"] = Comment::where('component_id', $data["component"]->id)->get();
+
+        $data["incars"] = Incar::where('component_id', $component->id)->get();
 
         $pdf = PDF::loadView('email.emailServiceCard', $data);
 

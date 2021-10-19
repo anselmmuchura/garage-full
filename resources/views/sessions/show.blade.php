@@ -113,7 +113,7 @@
                         </nav>
                     </div>
                 </div>
-                @if(!$tasks->isEmpty() && !$comments->isEmpty())
+                @if(!$tasks->isEmpty() && !$incars->isEmpty())
                 <div class="send-btn">
     			  <div class="clearFix">
     				<div class="text-right pb-15">
@@ -487,6 +487,109 @@
                     <!-- /.box-body -->
                 </div>
 
+                <div class="box box-solid box-primary" >
+                    <div class="box-header with-border">
+                        <h4 class="box-title">incar</h4>&nbsp; &nbsp;
+                        <button type="button"
+                            class="waves-effect waves-light btn btn-outline btn-rounded btn-warning mb-5 btn-sm"
+                            data-toggle="modal" data-target="#incarModal">Add incar</button>
+                        <ul class="box-controls pull-right">
+                            <li><a class="box-btn-close" href="#"></a></li>
+                            <li><a class="box-btn-slide" href="#"></a></li>
+                            <li><a class="box-btn-fullscreen" href="#"></a></li>
+                        </ul>
+                    </div>
+                    <div class="box-body p-10">
+                        <ul class="todo-list">
+                            @foreach($incars as $incar)
+                                <li class="b-1 p-0 mb-15">
+                                    <div class="position-relative p-20">
+                                        <!-- todo text -->
+                                        <span class="text-line font-size-14">{{ $incar->incar }}</span>
+                                        <!-- General tools such as edit or delete-->
+                                        <div class="pull-right text-dark flexbox">
+                                            <a href="#" data-toggle="modal" data-target="#incarModalUpdate"
+                                                data-container="body" title="" data-original-title="Edit"><i
+                                                    class="fa fa-edit"></i></a>
+
+
+                                            <!-- modal -->
+                                            <div id="incarModalUpdate" class="modal fade" tabindex="-1" role="dialog"
+                                                aria-labelledby="myModalLabel" style="display: none;"
+                                                aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="myModalLabel">Add incar
+                                                            </h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-hidden="true">×</button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form method="POST"
+                                                                action="{{ route('incars.update', $incar->id) }}">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <div class="box-body">
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label>Comments</label>
+                                                                                <input type="text" name="incar"
+                                                                                    class="form-control"
+                                                                                    placeholder="Comment goes here">
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                </div>
+                                                                <!-- /.box-body -->
+                                                                <div class="box-footer">
+                                                                    <button type="button"
+                                                                        class="btn btn-rounded btn-primary btn-outline"
+                                                                        data-dismiss="modal">
+                                                                        Cancel
+                                                                    </button>&nbsp; &nbsp;
+                                                                    <button type="submit" href="inspection.php"
+                                                                        class="btn btn-rounded btn-warning btn-outline mr-1">
+                                                                        <i class="ti-save-alt"></i> Save
+                                                                    </button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+
+                                                    </div>
+                                                    <!-- /.modal-content -->
+                                                </div>
+                                                <!-- /.modal-dialog -->
+                                            </div>
+                                            <form
+                                                action="{{ route('incars.delete', $incar->id) }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit"
+                                                    onclick="return confirm('Are you sure you want to delete this incar?')"
+                                                    data-toggle="tooltip" data-container="body" title=""
+                                                    data-original-title="Remove"
+                                                    style="background:transparent;color: #a5b2cb;border:none;"><i
+                                                        class="fa fa-trash-o"></i></button>
+                                            </form>
+                                        </div>
+                                        <div class="mt-5 ml-50 pl-5"><em>{{ $incar->updated_at }}</em></div>
+                                    </div>
+                                </li>
+                            @endforeach
+
+                        </ul>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+
+                
+
             </div>
     </div>
     <!-- /.row -->
@@ -622,6 +725,53 @@
                                         class="form-control">
                                     <input type="text" name="comment" class="form-control"
                                         placeholder="Comment goes here">
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="button" class="btn btn-rounded btn-primary btn-outline" data-dismiss="modal">
+                            Cancel
+                        </button>&nbsp; &nbsp;
+                        <button type="submit" href="inspection.php"
+                            class="btn btn-rounded btn-warning btn-outline mr-1">
+                            <i class="ti-save-alt"></i> Save
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<!-- modal -->
+<div id="incarModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Add incars</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="{{ route('incars.store', $inspection->id) }}">
+                    @csrf
+                    <div class="box-body">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Incars</label>
+                                    <input type="hidden" name="sessionId" value="{{ $session->id }}"
+                                        class="form-control">
+                                    <input type="text" name="incar" class="form-control"
+                                        placeholder="In car goes here">
                                 </div>
                             </div>
 
