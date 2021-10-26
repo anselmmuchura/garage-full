@@ -31,7 +31,11 @@ class Components extends Model
     }
     public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasOne(Comment::class);
+    }
+    public function incar()
+    {
+        return $this->hasOne(Incar::class);
     }
 
     public function service()

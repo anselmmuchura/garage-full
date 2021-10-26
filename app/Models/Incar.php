@@ -12,7 +12,7 @@ class Incar extends Model
     protected $fillable = [
         'incar',
         'checked',
-        'component_id',
+        'components_id',
         'service_id'
     ];
 

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Vehicle;
 use App\Models\Comment;
 use App\Models\Components;
+use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class CommentController extends Controller
@@ -32,9 +33,9 @@ class CommentController extends Controller
         $data = $validator->validated();
         
         $createdComment = Comment::create([
-            'comment' => $data['comment'],
+            'comment' => Str::title($data['comment']),
             'service_id' => $data['sessionId'],
-            'component_id' => $component_id,
+            'components_id' => $component_id,
         ]);
 
         if($createdComment){
@@ -64,7 +65,7 @@ class CommentController extends Controller
 
         if (Comment::where('id', $id)->exists()) {
             $comment = Comment::find($id);
-            $comment->comment = $data['comment'];
+            $comment->comment = Str::title($data['comment']);
             $comment->save();
 
             Alert::success('Success', 'Comment Updated!');

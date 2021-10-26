@@ -16,8 +16,8 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/vendors_css.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('assets/vendor_components/datatable/datatables.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor_components/datatable/datatables.min.css') }}" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/skin_color.css') }}">
     <link rel="stylesheet" href="{{ asset('css/users.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -44,6 +44,7 @@
     <!-- Adnix Admin App -->
     <script src="{{ asset('js/template.js') }}"></script>
     <script src="{{ asset('js/pages/data-table.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"></script>
     <script>
         $(document).ready(function () {
             $('.table').DataTable();

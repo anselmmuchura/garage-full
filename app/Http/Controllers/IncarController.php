@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Vehicle;
 use App\Models\Incar;
 use App\Models\Components;
+use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class IncarController extends Controller
@@ -30,11 +31,13 @@ class IncarController extends Controller
             ->withInput();
         }
         $data = $validator->validated();
+
+       //dd($data);
         
         $createdIncar = Incar::create([
-            'incar' => $data['incar'],
+            'incar' => Str::title($data['incar']),
             'service_id' => $data['sessionId'],
-            'component_id' => $component_id,
+            'components_id' => $component_id,
         ]);
 
         if($createdIncar){
@@ -64,7 +67,7 @@ class IncarController extends Controller
 
         if (Incar::where('id', $id)->exists()) {
             $incar = Incar::find($id);
-            $incar->incar = $data['incar'];
+            $incar->incar = Str::title($data['incar']);
             $incar->save();
 
             Alert::success('Success', 'Incar Updated!');

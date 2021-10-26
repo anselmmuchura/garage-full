@@ -163,6 +163,8 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        \Conner\Tagging\Providers\TaggingServiceProvider::class,
+        
 
         /*
          * Package Service Providers...

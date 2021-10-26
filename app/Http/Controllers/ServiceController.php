@@ -117,9 +117,10 @@ class ServiceController extends Controller
 
         $statuses = TaskStatus::get();
 
-        $comments = Comment::where('component_id', $component->id)->get();
+        $comments = Comment::where('components_id', $component->id)->get();
+        
 
-        $incars = Incar::where('component_id', $component->id)->get();
+        $incars = Incar::where('components_id', $component->id)->get();
 
         return view('sessions.show', ['session'=> $session, 'vehicle' => $vehicle, 'inspection' => $component, 'tasks' => $tasks, 'statuses' => $statuses,'comments' => $comments, 'incars' => $incars]);
     }
